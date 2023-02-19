@@ -9,12 +9,12 @@ sudo apt install xorg lightdm lightdm-gtk-greeter
 sudo mkdir -p /etc/lightdm/lightdm.conf.d/
 echo "[Seat:*]" | sudo tee -a /etc/lightdm/lightdm.conf.d/01_my.conf
 echo "greeter-hide-users=false" | sudo tee -a /etc/lightdm/lightdm.conf.d/01_my.conf
-echo "greeter-session=nody-greeter" | sudo tee -a /etc/lightdm/lightdm.conf.d/01_my.conf
 
 # Simple LightDM GTK theme
+[ -d "./simple-lightdm-gtk-theme" ] && sudo rm -rf ./simple-lightdm-gtk-theme
 git clone https://github.com/freande/simple-lightdm-gtk-theme.git
 cd simple-lightdm-gtk-theme
-sudo chmod +x ./install.sh
+sudo chmod +x install.sh
 sudo ./install.sh
 cd ..
 
@@ -34,6 +34,7 @@ mpv mpd mpc mpdris2 python3-mutagen ncmpcpp playerctl --needed
 sudo systemctl --user enable mpd.service
 sudo systemctl --user start mpd.service
 
+[ -d "./yoru" ] && sudo rm -rf ./yoru
 git clone --depth 1 --recurse-submodules https://github.com/rxyhn/yoru.git
 cd yoru && git submodule update --remote --merge
 
