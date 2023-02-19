@@ -65,6 +65,7 @@ cd ..
 # arandr?
 
 # vscode
+export NIXPKGS_ALLOW_UNFREE=1
 nix-env -iA nixpkgs.vscode
 
 # UFW
