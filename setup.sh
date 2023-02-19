@@ -38,7 +38,14 @@ rm -rf ~/.local/share/nvim
 git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim
 
 # Awesome with Yoru
-sudo apt install awesome awesome-extra
+sudo apt build-dep awesome
+git clone https://github.com/awesomewm/awesome
+cd awesome
+make package
+cd build
+sudo apt install ./*.deb
+cd ..
+cd ..
 sudo mkdir -p ~/.config/awesome/
 
 if ! command -v nix-env &> /dev/null
