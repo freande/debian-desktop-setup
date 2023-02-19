@@ -48,10 +48,11 @@ nix-env -iA nixpkgs.polkit_gnome
 
 sudo apt install picom rofi acpi acpid acpi-call upower lxappearance \
 jq inotify-tools xdotool xclip gpick ffmpeg blueman redshift \
-pipewire alsa-utils brightnessctl feh maim mpv mpd mpc mpdris2 python3-mutagen ncmpcpp playerctl
+pipewire alsa-utils brightnessctl feh maim mpv mpd mpc mpdris2 \
+python3-mutagen ncmpcpp playerctl libplayerctl-dev
 
-sudo systemctl --user enable mpd.service
-sudo systemctl --user start mpd.service
+systemctl --user enable mpd.service
+systemctl --user start mpd.service
 
 [ -d "./yoru" ] && sudo rm -rf ./yoru
 git clone --depth 1 --recurse-submodules https://github.com/rxyhn/yoru.git
