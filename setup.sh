@@ -1,9 +1,9 @@
 #!/bin/bash
 
-mkdir ~/temp
+sudo mkdir -p ~/temp
 cd ~/temp
 
-sudo apt install xorg lightdm
+sudo apt install xorg lightdm lightdm-gtk-greeter
 
 # Configure LightDM
 sudo mkdir -p /etc/lightdm/lightdm.conf.d/
@@ -14,7 +14,8 @@ echo "greeter-session=nody-greeter" | sudo tee -a /etc/lightdm/lightdm.conf.d/01
 # Simple LightDM GTK theme
 git clone https://github.com/freande/simple-lightdm-gtk-theme.git
 cd simple-lightdm-gtk-theme
-sudo install.sh
+sudo chmod +x ./install.sh
+sudo ./install.sh
 cd ..
 
 # Remove Grub timeout
@@ -25,8 +26,7 @@ sudo update-grub
 sudo apt install awesome awesome-extra
 sudo mkdir -p ~/.config/awesome/
 
-sudo apt-get install 'gtk2-engines*' --no-install-recommends
-sudo apt install picom kitty rofi acpi acpid acpi_call upower lxappearance \
+sudo apt install picom wezterm rofi acpi acpid acpi_call upower lxappearance \
 jq inotify-tools polkit-gnome xdotool xclip gpick ffmpeg blueman redshift \
 pipewire pipewire-alsa pipewire-pulse alsa-utils brightnessctl feh maim \
 mpv mpd mpc mpdris2 python3-mutagen ncmpcpp playerctl --needed
