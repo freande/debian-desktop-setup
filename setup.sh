@@ -40,7 +40,9 @@ git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim
 sudo apt install awesome awesome-extra
 sudo mkdir -p ~/.config/awesome/
 
-nix-env -iA nixpkgs.wezterm
+curl -LO https://github.com/wez/wezterm/releases/download/20221119-145034-49b9839f/wezterm-20221119-145034-49b9839f.Debian11.deb
+sudo apt install -y ./wezterm-20221119-145034-49b9839f.Debian11.deb
+
 nix-env -iA nixpkgs.polkit_gnome
 
 sudo apt install picom rofi acpi acpid acpi-call upower lxappearance \
