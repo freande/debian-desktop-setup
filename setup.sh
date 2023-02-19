@@ -15,6 +15,7 @@ sudo apt install xorg lightdm lightdm-gtk-greeter curl
 
 # Configure LightDM
 sudo mkdir -p /etc/lightdm/lightdm.conf.d/
+sudo rm /etc/lightdm/lightdm.conf.d/01_my.conf
 echo "[Seat:*]" | sudo tee -a /etc/lightdm/lightdm.conf.d/01_my.conf
 echo "greeter-hide-users=false" | sudo tee -a /etc/lightdm/lightdm.conf.d/01_my.conf
 
