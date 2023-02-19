@@ -3,10 +3,15 @@
 sudo mkdir -p ~/temp
 cd ~/temp
 
-sudo apt install xorg lightdm lightdm-gtk-greeter curl
-
 # Nix
-sh <(curl -L https://nixos.org/nix/install) --daemon
+if ! command -v nix-env &> /dev/null
+then
+    sh <(curl -L https://nixos.org/nix/install) --daemon
+    echo "NIX installed, please restart your shell and run the script again."
+    exit
+fi
+
+sudo apt install xorg lightdm lightdm-gtk-greeter curl
 
 # Configure LightDM
 sudo mkdir -p /etc/lightdm/lightdm.conf.d/
@@ -39,7 +44,7 @@ nix-env -iA nixpkgs.wezterm
 nix-env -iA nixpkgs.polkit_gnome
 
 sudo apt install picom rofi acpi acpid acpi-call upower lxappearance \
-jq inotify-tools polkit-gnome xdotool xclip gpick ffmpeg blueman redshift \
+jq inotify-tools xdotool xclip gpick ffmpeg blueman redshift \
 pipewire alsa-utils brightnessctl feh maim mpv mpd mpc mpdris2 python3-mutagen ncmpcpp playerctl
 
 sudo systemctl --user enable mpd.service
