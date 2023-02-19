@@ -54,9 +54,5 @@ sudo ufw default deny incoming
 sudo ufw default allow outgoing
 sudo ufw enable
 
-# Cleanup
-cd ~
-sudo rm -rf temp
-
 sudo apt install neofetch
 neofetch
