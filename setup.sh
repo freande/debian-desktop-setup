@@ -1,24 +1,18 @@
 #!/bin/bash
 
-cd ~
-mkdir temp
-cd temp
+mkdir ~/temp
+cp lightdm-gtk-greeter.conf ~/temp/lightdm-gtk-greeter.conf # Probably move this to own repo
+cd ~/temp
 
 sudo apt install xorg lightdm
 
-# Web Greeter
-sudo apt install liblightdm-gobject-dev python3-gi python3-pyqt5 \
-python3-pyqt5.qtwebengine python3-ruamel.yaml python3-pyinotify \
-libqt5webengine5 gobject-introspection libxcb1-dev libx11-dev
-
-wget https://github.com/JezerM/web-greeter/releases/download/3.5.2/web-greeter-3.5.2-ubuntu.deb
-sudo apt install ./web-greeter-3.5.2-ubuntu.deb
-# TODO: Change settings/theme in /etc/lightdm/web-greeter.yml
-
+# Configure lightDM
 sudo mkdir -p /etc/lightdm/lightdm.conf.d/
 echo "[Seat:*]" | sudo tee -a /etc/lightdm/lightdm.conf.d/01_my.conf
 echo "greeter-hide-users=false" | sudo tee -a /etc/lightdm/lightdm.conf.d/01_my.conf
 echo "greeter-session=nody-greeter" | sudo tee -a /etc/lightdm/lightdm.conf.d/01_my.conf
+
+cp -r lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
 
 # Remove Grub timeout
 sudo sed -i 's/^GRUB_TIMEOUT=[[:digit:]]*$/GRUB_TIMEOUT=0/g' /etc/default/grub
