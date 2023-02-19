@@ -47,6 +47,12 @@ cd ..
 # files Thunar
 # arandr?
 
+# UFW
+sudo apt install ufw
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw enable
+
 # Cleanup
 cd ~
 sudo rm -rf temp
