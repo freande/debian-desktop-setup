@@ -43,9 +43,8 @@ sudo apt install awesome rofi zsh zplug picom thunar neovim policykit-1 lxpolkit
 ## maybe pulseaudio-module-bluetooth instead of pulseaudio?
 
 # Copy config
-## Uncomment later
-# sudo chmod +x copy-config.sh
-# sudo ./copy-config.sh
+sudo chmod +x copy-config.sh
+sudo ./copy-config.sh
 
 # AwesomeWM config?
 sudo apt install luarocks
@@ -95,6 +94,10 @@ git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
 # vscode
 export NIXPKGS_ALLOW_UNFREE=1
 nix-env -iA nixpkgs.vscode
+
+# Chrome (Should really switch to a better browser...)
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt install ./google-chrome-stable_current_amd64.deb
 
 # UFW
 sudo apt install ufw
