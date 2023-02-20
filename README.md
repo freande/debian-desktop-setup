@@ -12,17 +12,17 @@ My attempt of a script to setup a Debian desktop from a bare install.
 > *Can it really be finished?*<br/>
 
 ## 🛠️ Setup
-To run full install:
+To run full setup:
 ```
-install.sh
+./setup.sh
 ```
 To just copy new config:
 ```
-copy-config.sh
+./copy-config.sh
 ```
 To add current config to repo:
 ```
-backup-config.sh
+./backup-config.sh
 ```
 
 ## ⚙️ Components
@@ -48,7 +48,6 @@ backup-config.sh
  |  |  |
  
 ## 📝 Todo
-### Test it!
 ### Configs to copy (and then update)
 - cp -r /usr/share/doc/alacritty/example/alacritty.yml  ~/.config/alacritty/.alacritty.yml
 - cp -r /etc/xdg/awesome/rc.lua ~/.config/awesome/rc.lua
