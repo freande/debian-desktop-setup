@@ -37,6 +37,7 @@ backup-config.sh
  | Editors | [Neovim](https://neovim.io/) <br/> [NvChad](https://github.com/NvChad/NvChad) <br/> [vscode](https://code.visualstudio.com/) |
  | Browser | [Chrome](https://www.google.com/chrome/) |
  | Firewall | [UFW](https://manpages.ubuntu.com/manpages/bionic/en/man8/ufw.8.html) |
+ |  |  |
 
 ### Awesome Parts
 |  |  |
@@ -44,6 +45,7 @@ backup-config.sh
  | Battery Widget | [awesome-power_widget](https://github.com/stefano-m/awesome-power_widget) |
  | Network Widget | [awesome-connman_widget](https://github.com/stefano-m/awesome-connman_widget) |
  | Volume Widget | [awesome-pulseaudio_widget](https://github.com/stefano-m/awesome-pulseaudio_widget) |
+ |  |  |
  
 ## 📝 Todo
 ### Configs to copy (and then update)
