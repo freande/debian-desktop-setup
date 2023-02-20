@@ -28,7 +28,6 @@ backup-config.sh
  
 ## Todo
 ### Style install script a bit ;p
-### Prune .zshrc
 ### Add browser install
 ### Configs to copy (and then update)
 - cp -r /usr/share/doc/alacritty/example/alacritty.yml  ~/.config/alacritty/.alacritty.yml
