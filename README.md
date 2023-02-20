@@ -4,7 +4,14 @@
 
 My attempt of a script to setup a Debian desktop from a bare install.
 
-## Instructions
+**Do I know what I'm doing?**<br/>
+*Not at all!*<br/>
+**Does it work?**<br/>
+*I hope so!*<br/>
+**Is it finished?**<br/>
+*Can it really be finished?*<br/>
+
+## 🛠️ Setup
 To run full install:
 ```
 install.sh
@@ -18,7 +25,7 @@ To add current config to repo:
 backup-config.sh
 ```
 
-## Stuff used
+## ⚙️ Components
  |  |  |
  | --- | --- |
  | DM | [LightDM](https://github.com/canonical/lightdm) <br/> [LightDM GTK Greeter](https://github.com/Xubuntu/lightdm-gtk-greeter) <br/>[simple-lightdm-gtk-theme](https://github.com/freande/simple-lightdm-gtk-theme) |
@@ -31,14 +38,14 @@ backup-config.sh
  | Browser | [Chrome](https://www.google.com/chrome/) |
  | Firewall | [UFW](https://manpages.ubuntu.com/manpages/bionic/en/man8/ufw.8.html) |
 
-### Awesome Widgets
+### Awesome Parts
 |  |  |
  |---|---|
  | Battery Widget | [awesome-power_widget](https://github.com/stefano-m/awesome-power_widget) |
  | Network Widget | [awesome-connman_widget](https://github.com/stefano-m/awesome-connman_widget) |
  | Volume Widget | [awesome-pulseaudio_widget](https://github.com/stefano-m/awesome-pulseaudio_widget) |
  
-## Todo
+## 📝 Todo
 ### Configs to copy (and then update)
 - cp -r /usr/share/doc/alacritty/example/alacritty.yml  ~/.config/alacritty/.alacritty.yml
 - cp -r /etc/xdg/awesome/rc.lua ~/.config/awesome/rc.lua
@@ -47,7 +54,6 @@ backup-config.sh
 ### Theme?
 - read [this](http://epsi-rns.github.io/desktop/2019/06/15/awesome-overview.html)
 - remove space between
-- find gtk theme? how does that work?
 - only use a few workspaces, 5? I II III IV V?
 - hide topbar? only show widgets?
 - remove menu button?
