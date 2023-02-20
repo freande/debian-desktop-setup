@@ -1,3 +1,4 @@
 #!/bin/bash
 
-cp -r ./.config/* ~/.config/
+cp -r ./files/.config/* ~/.config/
+cp -r ./files/.zshrc ~/.zshrc

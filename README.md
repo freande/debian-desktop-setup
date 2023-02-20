@@ -27,7 +27,8 @@ backup-config.sh
  - Volume Widget: [awesome-pulseaudio_widget](https://github.com/stefano-m/awesome-pulseaudio_widget)
  
 ## Todo
-### Switch to Zsh
+### Style install script a bit ;p
+### Prune .zshrc
 ### Add browser install
 ### Configs to copy (and then update)
 - cp -r /usr/share/doc/alacritty/example/alacritty.yml  ~/.config/alacritty/.alacritty.yml
@@ -35,6 +36,7 @@ backup-config.sh
 - cp -r /usr/share/awesome/themes/default/ ~/.config/awesome/themes/default/
 - rofi -dump-config > ~/.config/rofi/config.rasi
 ### Theme?
+- read [this](http://epsi-rns.github.io/desktop/2019/06/15/awesome-overview.html)
 - remove space between
 - find gtk theme? how does that work?
 - only use a few workspaces, 5? I II III IV V?
@@ -42,3 +44,4 @@ backup-config.sh
 - remove menu button?
 - set hack nf mono as default font everywhere
 - set alacritty as default terminal
+- bluetooth widget?
