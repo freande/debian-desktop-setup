@@ -19,7 +19,7 @@ backup-config.sh
 ```
 
 ## Stuff used
- | Type | What |
+ |  |  |
  | --- | --- |
  | DM | [LightDM](https://github.com/canonical/lightdm), [LightDM GTK Greeter](https://github.com/Xubuntu/lightdm-gtk-greeter), [simple-lightdm-gtk-theme](https://github.com/freande/simple-lightdm-gtk-theme) |
  | Font | [Hack NF Complete Mono](https://github.com/ryanoasis/nerd-fonts.git) |
@@ -32,7 +32,7 @@ backup-config.sh
  | WM | : [Awesome](https://awesomewm.org/) |
 
 ### Awesome Widgets
-| Type | What |
+|  |  |
  |---|---|
  | Battery |  Widget: [awesome-power_widget](https://github.com/stefano-m/awesome-power_widget) |
  | Network |  Widget: [awesome-connman_widget](https://github.com/stefano-m/awesome-connman_widget) |
