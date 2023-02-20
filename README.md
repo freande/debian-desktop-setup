@@ -39,7 +39,6 @@ backup-config.sh
  | Volume Widget | [awesome-pulseaudio_widget](https://github.com/stefano-m/awesome-pulseaudio_widget) |
  
 ## Todo
-### Style install script a bit ;p
 ### Configs to copy (and then update)
 - cp -r /usr/share/doc/alacritty/example/alacritty.yml  ~/.config/alacritty/.alacritty.yml
 - cp -r /etc/xdg/awesome/rc.lua ~/.config/awesome/rc.lua
