@@ -21,22 +21,22 @@ backup-config.sh
 ## Stuff used
  |  |  |
  | --- | --- |
- | DM | [LightDM](https://github.com/canonical/lightdm), [LightDM GTK Greeter](https://github.com/Xubuntu/lightdm-gtk-greeter), [simple-lightdm-gtk-theme](https://github.com/freande/simple-lightdm-gtk-theme) |
- | Font | [Hack NF Complete Mono](https://github.com/ryanoasis/nerd-fonts.git) |
+ | DM | [LightDM](https://github.com/canonical/lightdm) <br/> [LightDM GTK Greeter](https://github.com/Xubuntu/lightdm-gtk-greeter) <br/>[simple-lightdm-gtk-theme](https://github.com/freande/simple-lightdm-gtk-theme) |
+ | WM | [Awesome](https://awesomewm.org/) |
+ | Launcher | [Rofi](https://github.com/davatorium/rofi) |
+ | Terminal | [Alacritty](https://alacritty.org/) <br/> [Starship](https://starship.rs/) <br/> [Starship Powerline Config](https://github.com/freande/starship-powerline-config) |
  | Shell | [Zsh](https://www.zsh.org/) |
- | Terminal | : [Alacritty](https://alacritty.org/), [Starship](https://starship.rs/), [Starship Powerline Config](https://github.com/freande/starship-powerline-config) |
- | Editors | : [Neovim](https://neovim.io/), [NvChad](https://github.com/NvChad/NvChad), [vscode](https://code.visualstudio.com/) |
- | Browser | : [Chrome](https://www.google.com/chrome/) |
- | Launcher | : [Rofi](https://github.com/davatorium/rofi) |
- | Firewall | : [UFW](https://manpages.ubuntu.com/manpages/bionic/en/man8/ufw.8.html) |
- | WM | : [Awesome](https://awesomewm.org/) |
+ | Font | [Hack NF Complete Mono](https://github.com/ryanoasis/nerd-fonts.git) |
+ | Editors | [Neovim](https://neovim.io/) <br/> [NvChad](https://github.com/NvChad/NvChad) <br/> [vscode](https://code.visualstudio.com/) |
+ | Browser | [Chrome](https://www.google.com/chrome/) |
+ | Firewall | [UFW](https://manpages.ubuntu.com/manpages/bionic/en/man8/ufw.8.html) |
 
 ### Awesome Widgets
 |  |  |
  |---|---|
- | Battery |  Widget: [awesome-power_widget](https://github.com/stefano-m/awesome-power_widget) |
- | Network |  Widget: [awesome-connman_widget](https://github.com/stefano-m/awesome-connman_widget) |
- | Volume |  Widget: [awesome-pulseaudio_widget](https://github.com/stefano-m/awesome-pulseaudio_widget) |
+ | Battery Widget | [awesome-power_widget](https://github.com/stefano-m/awesome-power_widget) |
+ | Network Widget | [awesome-connman_widget](https://github.com/stefano-m/awesome-connman_widget) |
+ | Volume Widget | [awesome-pulseaudio_widget](https://github.com/stefano-m/awesome-pulseaudio_widget) |
  
 ## Todo
 ### Style install script a bit ;p
