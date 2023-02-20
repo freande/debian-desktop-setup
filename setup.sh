@@ -39,9 +39,19 @@ sudo sed -i 's/^GRUB_TIMEOUT=[[:digit:]]*$/GRUB_TIMEOUT=0/g' /etc/default/grub
 sudo update-grub
 
 # Required packages
-sudo apt install awesome rofi picom thunar neovim lxpolkit yad pulseaudio pavucontrol
+sudo apt install awesome rofi picom thunar neovim policykit-1 lxpolkit yad pulseaudio pavucontrol upower connman
+## blueman?
 
 # AwesomeWM config?
+sudo apt install luarocks
+luarocks install pulseaudio_dbus
+## make sure load-module module-dbus-protocol is present in ~/.config/pulse/default.pa
+luarocks install pulseaudio_widget
+luarocks install connman_dbus
+luarocks install connman_widget
+luarocks install upower_dbus
+luarocks install power_widget
+
 # Rofi config?
 
 # Hack NF font
