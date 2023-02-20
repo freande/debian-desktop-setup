@@ -4,12 +4,12 @@
 
 My attempt of a script to setup a Debian desktop from a bare install.
 
-**Do I know what I'm doing?**<br/>
-*Not at all!*<br/>
-**Does it work?**<br/>
-*I hope so!*<br/>
-**Is it finished?**<br/>
-*Can it really be finished?*<br/>
+> **Do I know what I'm doing?**<br/>
+> *Not at all!*<br/>
+> **Does it work?**<br/>
+> *I hope so!*<br/>
+> **Is it finished?**<br/>
+> *Can it really be finished?*<br/>
 
 ## 🛠️ Setup
 To run full install:
@@ -48,6 +48,7 @@ backup-config.sh
  |  |  |
  
 ## 📝 Todo
+### Test it!
 ### Configs to copy (and then update)
 - cp -r /usr/share/doc/alacritty/example/alacritty.yml  ~/.config/alacritty/.alacritty.yml
 - cp -r /etc/xdg/awesome/rc.lua ~/.config/awesome/rc.lua
