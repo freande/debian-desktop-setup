@@ -54,7 +54,7 @@ step "Copy config"
 sudo chmod +x copy-config.sh
 sudo ./copy-config.sh
 
-step "AwesomeWM config"
+step "AwesomeWM deps"
 sudo apt install luarocks
 luarocks install pulseaudio_dbus
 ## make sure load-module module-dbus-protocol is present in ~/.config/pulse/default.pa
@@ -63,8 +63,6 @@ luarocks install connman_dbus
 luarocks install connman_widget
 luarocks install upower_dbus
 luarocks install power_widget
-
-# Rofi config?
 
 step "Hack NF font"
 mkdir temp
