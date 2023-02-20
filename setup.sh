@@ -39,8 +39,13 @@ sudo sed -i 's/^GRUB_TIMEOUT=[[:digit:]]*$/GRUB_TIMEOUT=0/g' /etc/default/grub
 sudo update-grub
 
 # Required packages
-sudo apt install awesome rofi picom thunar neovim policykit-1 lxpolkit yad pulseaudio pavucontrol upower connman
-## blueman?
+sudo apt install awesome rofi picom thunar neovim policykit-1 lxpolkit yad pulseaudio pavucontrol upower connman bluez
+## maybe pulseaudio-module-bluetooth instead of pulseaudio
+
+# Copy config
+## Uncomment later
+# sudo chmod +x copy-config.sh
+# sudo ./copy-config.sh
 
 # AwesomeWM config?
 sudo apt install luarocks
