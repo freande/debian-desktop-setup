@@ -78,7 +78,6 @@ chsh -s $(which zsh)
 
 # Starship
 nix-env -iA nixpkgs.starship
-cat "starship init fish | source" | sudo tee -a ~/.config/fish/config.fish ## Make conditional
 
 # Starship config
 git clone https://github.com/freande/starship-powerline-config.git
