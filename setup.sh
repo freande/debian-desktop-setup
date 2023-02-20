@@ -3,7 +3,10 @@
 sudo mkdir -p ~/temp
 cd ~/temp
 
-# Nix
+# Packages for fetching
+sudo apt install wget curl
+
+# NIX package manager
 if ! command -v nix-env &> /dev/null
 then
     sh <(curl -L https://nixos.org/nix/install) --daemon
@@ -11,11 +14,15 @@ then
     exit
 fi
 
-sudo apt install xorg lightdm lightdm-gtk-greeter curl
+# X display server
+sudo apt install xorg x11-xserver-utils
+
+# LightDM + GTK Greeter
+sudo apt install lightdm lightdm-gtk-greeter
 
 # Configure LightDM
 sudo mkdir -p /etc/lightdm/lightdm.conf.d/
-sudo rm /etc/lightdm/lightdm.conf.d/01_my.conf
+sudo rm /etc/lightdm/lightdm.conf.d/01_my.conf  ## Make conditional instead
 echo "[Seat:*]" | sudo tee -a /etc/lightdm/lightdm.conf.d/01_my.conf
 echo "greeter-hide-users=false" | sudo tee -a /etc/lightdm/lightdm.conf.d/01_my.conf
 
@@ -31,52 +38,45 @@ cd ..
 sudo sed -i 's/^GRUB_TIMEOUT=[[:digit:]]*$/GRUB_TIMEOUT=0/g' /etc/default/grub
 sudo update-grub
 
-# Neovim
-sudo apt install neovim
+# Required packages
+sudo apt install awesome rofi picom thunar neovim lxpolkit yad pulseaudio pavucontrol
+
+# AwesomeWM config?
+# Rofi config?
+
+# Hack NF font
+mkdir temp
+cd temp
+git clone https://github.com/ryanoasis/nerd-fonts.git
+cd nerd-fonts
+./install.sh Hack
+sudo fc-cache -fv ## Needed?
+cd ..
+
+# Alacritty terminal
+nix-env -iA nixpkgs.alacritty
+
+# Alacritty config?
+
+# Fish shell
+nix-env -iA nixpkgs.fish
+which fish | sudo tee -a /etc/shells ## Make conditional
+which fish | chsh -s
+
+# Starship
+nix-env -iA nixpkgs.starship
+cat "starship init fish | source" | sudo tee -a ~/.config/fish/config.fish ## Make conditional
+
+# Starship config
+git clone https://github.com/freande/starship-powerline-config.git
+cd starship-powerline-config
+cp ./starship.toml ~/.config/starship.toml
+cd ..
+
+# Neovim config (NvChad)
 nix-env -iA nixpkgs.ripgrep
 rm -rf ~/.local/share/nvim
-git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim
-
-# Awesome with Yoru
-sudo apt build-dep awesome
-git clone https://github.com/awesomewm/awesome
-cd awesome
-make package
-cd build
-sudo apt install ./*.deb
-cd ..
-cd ..
-sudo mkdir -p ~/.config/awesome/
-
-if ! command -v nix-env &> /dev/null
-then
-    curl -LO https://github.com/wez/wezterm/releases/download/20221119-145034-49b9839f/wezterm-20221119-145034-49b9839f.Debian11.deb
-    sudo apt install -y ./wezterm-20221119-145034-49b9839f.Debian11.deb
-fi
-
-nix-env -iA nixpkgs.polkit_gnome
-
-sudo apt install picom rofi acpi acpid acpi-call upower lxappearance \
-jq inotify-tools xdotool xclip gpick ffmpeg blueman redshift \
-pipewire alsa-utils brightnessctl feh maim mpv mpd mpc mpdris2 \
-python3-mutagen ncmpcpp playerctl libplayerctl-dev
-
-systemctl --user enable mpd.service
-systemctl --user start mpd.service
-
-[ -d "./yoru" ] && sudo rm -rf ./yoru
-git clone --depth 1 --recurse-submodules https://github.com/rxyhn/yoru.git
-cd yoru && git submodule update --remote --merge
-
-sudo cp -r config/* ~/.config/
-sudo cp -r misc/fonts/* ~/.fonts/
-sudo fc-cache -fv
-cd ..
-
-# network networkmanager-wifi?
-# sound?
-# files Thunar
-# arandr?
+git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
 
 # vscode
 export NIXPKGS_ALLOW_UNFREE=1
