@@ -39,10 +39,10 @@ if ! zplug check --verbose; then
 fi
 zplug load
 
-export PATH="~/.cargo/bin:$PATH"
-
-eval "$(starship init zsh)"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
 fi
+
+eval "$(starship init zsh)"
