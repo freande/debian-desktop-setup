@@ -24,10 +24,6 @@ To add current config to repo:
 ```
 ./backup-config.sh
 ```
-Init default config:
-```
-./init-config.sh
-```
 
 ## ⚙️ Components
  |  |  |
@@ -52,8 +48,7 @@ Init default config:
  |  |  |
  
 ## 📝 Todo
-### Boot start job issues, bt?
-### Init config
+### Boot start job issues?
 ### Theme?
 - read [this](http://epsi-rns.github.io/desktop/2019/06/15/awesome-overview.html)
 - remove space between

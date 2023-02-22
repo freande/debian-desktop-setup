@@ -20,6 +20,12 @@ if [ "$EUID" -eq 0 ]
   exit
 fi
 
+step "Switch source to Debian Bookworm"
+sudo mv /etc/apt/sources.list /etc/apt/sources.list.bak
+sudo cp CUR_DIR/files/sources.list /etc/apt/sources.list
+sudo apt update
+sudo apt upgrade
+
 sudo mkdir -p ~/temp
 
 # Packages for fetching
@@ -77,7 +83,8 @@ sudo unzip ~/temp/Hack.zip -d /usr/share/fonts/
 sudo fc-cache -fv
 
 step "Alacritty"
-nix-env -iA nixpkgs.alacritty
+sudo apt install cargo cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
+cargo install alacritty
 
 step "Zsh setup"
 chsh -s $(which zsh)
