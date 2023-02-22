@@ -22,7 +22,7 @@ fi
 
 step "Switch source to Debian Bookworm"
 sudo mv /etc/apt/sources.list /etc/apt/sources.list.bak
-sudo cp CUR_DIR/files/sources.list /etc/apt/sources.list
+sudo cp $CUR_DIR/files/sources.list /etc/apt/sources.list
 sudo apt update
 sudo apt upgrade
 
