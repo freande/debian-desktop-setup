@@ -48,7 +48,6 @@ To add current config to repo:
  |  |  |
  
 ## 📝 Todo
-### Boot start job issues?
 ### Theme?
 - read [this](http://epsi-rns.github.io/desktop/2019/06/15/awesome-overview.html)
 - remove space between
