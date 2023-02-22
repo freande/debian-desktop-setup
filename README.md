@@ -24,6 +24,10 @@ To add current config to repo:
 ```
 ./backup-config.sh
 ```
+Init default config:
+```
+./init-config.sh
+```
 
 ## ⚙️ Components
  |  |  |
@@ -48,11 +52,8 @@ To add current config to repo:
  |  |  |
  
 ## 📝 Todo
-### Configs to copy (and then update)
-- cp -r /usr/share/doc/alacritty/example/alacritty.yml  ~/.config/alacritty/.alacritty.yml
-- cp -r /etc/xdg/awesome/rc.lua ~/.config/awesome/rc.lua
-- cp -r /usr/share/awesome/themes/default/ ~/.config/awesome/themes/default/
-- rofi -dump-config > ~/.config/rofi/config.rasi
+### Boot start job issues, bt?
+### Init config
 ### Theme?
 - read [this](http://epsi-rns.github.io/desktop/2019/06/15/awesome-overview.html)
 - remove space between
@@ -62,3 +63,4 @@ To add current config to repo:
 - set hack nf mono as default font everywhere
 - set alacritty as default terminal
 - bluetooth widget?
+- signout/shutdown menu

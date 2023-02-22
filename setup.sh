@@ -5,16 +5,17 @@ LGREEN='\033[1;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
+CUR_DIR="$(dirname "$0")"
+
 step () {
     echo -e "${GREEN}-------------${NC}"
     echo -e "${LGREEN}Next step: ${YELLOW}$1${NC}"
     echo -e "${GREEN}-------------${NC}"
     echo "<Press enter to continue>"
     read
-    echo
 }
 
-if [ "$EUID" -e 0 ]
+if [ "$EUID" -eq 0 ]
   then echo "Please don't run as root"
   exit
 fi
@@ -40,12 +41,12 @@ sudo apt install lightdm lightdm-gtk-greeter
 
 step "Configure LightDM"
 sudo mkdir -p /etc/lightdm/lightdm.conf.d/
-sudo rm /etc/lightdm/lightdm.conf.d/01_my.conf  ## Make conditional instead
+sudo rm /etc/lightdm/lightdm.conf.d/01_my.conf
 echo "[Seat:*]" | sudo tee -a /etc/lightdm/lightdm.conf.d/01_my.conf
 echo "greeter-hide-users=false" | sudo tee -a /etc/lightdm/lightdm.conf.d/01_my.conf
 
 step "Simple LightDM GTK theme"
-[ -d "~/temp/simple-lightdm-gtk-theme" ] && sudo rm -rf ~/temp/simple-lightdm-gtk-theme
+if [ -d "~/temp/simple-lightdm-gtk-theme" ]; then sudo rm -rf ~/temp/simple-lightdm-gtk-theme; fi
 git clone https://github.com/freande/simple-lightdm-gtk-theme.git ~/temp/simple-lightdm-gtk-theme
 sudo chmod +x ~/temp/simple-lightdm-gtk-theme/install.sh
 sudo ~/temp/simple-lightdm-gtk-theme/install.sh
@@ -60,21 +61,19 @@ sudo apt install awesome rofi zsh zplug picom thunar neovim lxpolkit yad pulseau
 
 step "Copy config"
 sudo chmod +x copy-config.sh
-sudo ./copy-config.sh
+sudo $CUR_DIR/copy-config.sh
 
 step "AwesomeWM deps"
-sudo apt install luarocks
-sudo luarocks install pulseaudio_dbus
+sudo apt install luarocks make
 ## make sure load-module module-dbus-protocol is present in ~/.config/pulse/default.pa
 sudo luarocks install pulseaudio_widget
-sudo luarocks install connman_dbus
 sudo luarocks install connman_widget
-sudo luarocks install upower_dbus
 sudo luarocks install power_widget
 
 step "Hack NF font"
+if [ -a "~/temp/Hack.zip" ]; then sudo rm -f ~/temp/Hack.zip; fi
 wget -P ~/temp/ https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/Hack.zip
-unzip ~/temp/Hack.zip -d /usr/share/fonts/
+sudo unzip ~/temp/Hack.zip -d /usr/share/fonts/
 sudo fc-cache -fv
 
 step "Alacritty"
@@ -85,19 +84,20 @@ chsh -s $(which zsh)
 nix-env -iA nixpkgs.starship
 
 step "Starship config"
+if [ -d "~/temp/starship-powerline-config" ]; then sudo rm -rf ~/temp/starship-powerline-config; fi
 git clone https://github.com/freande/starship-powerline-config.git ~/temp/starship-powerline-config
 cp ~/temp/starship-powerline-config/starship.toml ~/.config/starship.toml
 
-step "Neovim config (NvChad)"
+step "NvChad requirements"
 nix-env -iA nixpkgs.ripgrep
 rm -rf ~/.local/share/nvim
-git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
 
 step "vscode"
 export NIXPKGS_ALLOW_UNFREE=1
 nix-env -iA nixpkgs.vscode
 
 step "Chrome (Should really switch to a better browser...)"
+if [ -a "~/temp/google-chrome-stable_current_amd64.deb" ]; then sudo rm -f ~/temp/google-chrome-stable_current_amd64.deb; fi
 wget -P ~/temp/ https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install ~/temp/google-chrome-stable_current_amd64.deb
 

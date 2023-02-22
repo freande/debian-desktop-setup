@@ -1,4 +1,6 @@
 #!/bin/bash
 
-cp -r ./files/.config/* ~/.config/
-cp -r ./files/.zshrc ~/.zshrc
+CUR_DIR="$(dirname "$0")"
+
+cp -r $CUR_DIR/files/.config/* ~/.config/
+cp -r $CUR_DIR/files/.zshrc ~/.zshrc
