@@ -30,6 +30,7 @@ To add current config to repo:
  | --- | --- |
  | DM | [LightDM](https://github.com/canonical/lightdm) <br/> [LightDM GTK Greeter](https://github.com/Xubuntu/lightdm-gtk-greeter) <br/>[simple-lightdm-gtk-theme](https://github.com/freande/simple-lightdm-gtk-theme) |
  | WM | [Awesome](https://awesomewm.org/) |
+ | Theme | [Gruvbox GTK Theme](https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme) |
  | Launcher | [Rofi](https://github.com/davatorium/rofi) |
  | Terminal | [Alacritty](https://alacritty.org/) <br/> [Starship](https://starship.rs/) <br/> [Starship Powerline Config](https://github.com/freande/starship-powerline-config) |
  | Shell | [Zsh](https://www.zsh.org/) |
