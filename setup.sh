@@ -64,7 +64,7 @@ sudo chmod +x copy-config.sh
 sudo $CUR_DIR/copy-config.sh
 
 step "AwesomeWM deps"
-sudo apt install luarocks make
+sudo apt install luarocks make libgirepository1.0-dev
 ## make sure load-module module-dbus-protocol is present in ~/.config/pulse/default.pa
 sudo luarocks install pulseaudio_widget
 sudo luarocks install connman_widget
