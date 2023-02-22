@@ -52,7 +52,7 @@ echo "[Seat:*]" | sudo tee -a /etc/lightdm/lightdm.conf.d/01_my.conf
 echo "greeter-hide-users=false" | sudo tee -a /etc/lightdm/lightdm.conf.d/01_my.conf
 
 step "Simple LightDM GTK theme"
-if [ -d "~/temp/simple-lightdm-gtk-theme" ]; then sudo rm -rf ~/temp/simple-lightdm-gtk-theme; fi
+sudo rm -rf ~/temp/simple-lightdm-gtk-theme
 git clone https://github.com/freande/simple-lightdm-gtk-theme.git ~/temp/simple-lightdm-gtk-theme
 sudo chmod +x ~/temp/simple-lightdm-gtk-theme/install.sh
 sudo ~/temp/simple-lightdm-gtk-theme/install.sh
@@ -77,7 +77,7 @@ sudo luarocks install connman_widget
 sudo luarocks install power_widget
 
 step "Hack NF font"
-if [ -a "~/temp/Hack.zip" ]; then sudo rm -f ~/temp/Hack.zip; fi
+sudo rm -f ~/temp/Hack.zip
 wget -P ~/temp/ https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/Hack.zip
 sudo unzip ~/temp/Hack.zip -d /usr/share/fonts/
 sudo fc-cache -fv
@@ -91,7 +91,7 @@ chsh -s $(which zsh)
 nix-env -iA nixpkgs.starship
 
 step "Starship config"
-if [ -d "~/temp/starship-powerline-config" ]; then sudo rm -rf ~/temp/starship-powerline-config; fi
+sudo rm -rf ~/temp/starship-powerline-config
 git clone https://github.com/freande/starship-powerline-config.git ~/temp/starship-powerline-config
 cp ~/temp/starship-powerline-config/starship.toml ~/.config/starship.toml
 
@@ -104,7 +104,7 @@ export NIXPKGS_ALLOW_UNFREE=1
 nix-env -iA nixpkgs.vscode
 
 step "Chrome (Should really switch to a better browser...)"
-if [ -a "~/temp/google-chrome-stable_current_amd64.deb" ]; then sudo rm -f ~/temp/google-chrome-stable_current_amd64.deb; fi
+sudo rm -f ~/temp/google-chrome-stable_current_amd64.deb
 wget -P ~/temp/ https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install ~/temp/google-chrome-stable_current_amd64.deb
 
