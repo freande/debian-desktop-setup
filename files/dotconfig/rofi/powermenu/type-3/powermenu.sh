@@ -22,7 +22,7 @@ shutdown='\uf011'
 reboot='\uf0e2'
 lock='\uea75'
 suspend='\uf186'
-logout='\udb80\udf43'
+logout='\uf08b'
 yes='\uf00c'
 no='\uf00d'
 
