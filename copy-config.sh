@@ -2,7 +2,7 @@
 
 CUR_DIR="$(dirname "$0")"
 
-## Problem... again..
 mkdir -p $HOME/.config
-cp -r $CUR_DIR/files/dotconfig/. $HOME/.config/
-cp -r $CUR_DIR/files/.zshrc $HOME/.zshrc
+sudo cp -r $CUR_DIR/files/dotconfig/. $HOME/.config/
+sudo cp $CUR_DIR/files/.gtkrc-2.0 $HOME/.gtkrc-2.0 
+sudo cp $CUR_DIR/files/.zshrc $HOME/.zshrc

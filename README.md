@@ -57,12 +57,8 @@ To add current config to repo:
 - bt keyboard/mouse
 - bt sound
 - nvim
-### Theme?
+### Theme
 - read [this](http://epsi-rns.github.io/desktop/2019/06/15/awesome-overview.html)
-- can I find the GTK theme settings?
-  - set theme and icons with lxapearance
-  - backup gtk3 file
-  - remove lxapearance
 - remove space between
 - only use a few workspaces, 5? I II III IV V?
 - hide topbar? only show widgets?
