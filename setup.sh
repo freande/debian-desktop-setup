@@ -1,5 +1,6 @@
 #!/bin/bash
 
+RED='\033[0;31m'
 GREEN='\033[0;32m'
 LGREEN='\033[1;32m'
 YELLOW='\033[1;33m'
@@ -19,31 +20,34 @@ function main {
   sudo apt install wget curl
 
   step "Switch source to Debian Bookworm" switch_source
-  step "NIX package manager" install_nix
-  step "X display server" install_x
-  step "LightDM + GTK Greeter" setup_lightdm_theme
+  step "Install Nala" install_nala
+  step "Install NIX package manager" install_nix
+  step "Install desktop packages" install_desktop_pkgs
   step "Configure Simple LightDM GTK theme" setup_lightdm_theme
   step "Remove Grub timeout" remove_grubtimeout
-  step "Desktop packages" install_desktop_pkgs
-  step "AwesomeWM deps" install_awesome_deps
-  step "Hack NF font" install_font
-  step "Alacritty" install_alacritty
-  step "Zsh setup with Starship" setup_zsh
-  step "NvChad requirements" install_nvchad_deps
-  step "vscode" install_vscode
-  step "Chrome (Should really switch to a better browser...)" install_chrome
-  step "UFW" install_setup_ufw
+  step "Install AwesomeWM deps" install_awesome_deps
+  step "Install Hack NF font" install_hack_font
+  step "Setup Zsh with Starship" setup_zsh
+  step "Remove .local/share/nvim for NvChad" remove_localnvimshare_nvchad
+  step "Install Visual Studio Code" install_vscode
+  step "Install Google Chrome (Should really switch to a better browser...)" install_chrome
+  step "Setup UFW" setup_ufw
   step "Copy config" copy_config
-  step "Finish!" wrapup
+  
+  neofetch
 }
 
 function step {
   echo -e "${GREEN}-------------${NC}"
   echo -e "${LGREEN}Next step: ${YELLOW}$1${NC}"
   echo -e "${GREEN}-------------${NC}"
-  echo "<Press enter to continue>"
+  echo "<Press enter to continue> (s to skip this step)"
   read
-  $2
+  if [ "$REPLY" != "s" ] && [ "$REPLY" != "S" ]; then
+    $2
+  else
+    echo -e "${RED}Skipping...${NC}"
+  fi
 }
 
 function switch_source {
@@ -51,6 +55,10 @@ function switch_source {
   sudo cp $CUR_DIR/files/sources.list /etc/apt/sources.list
   sudo apt update
   sudo apt upgrade
+}
+
+function install_nala {
+  sudo apt install nala
 }
 
 function install_nix {
@@ -61,12 +69,12 @@ function install_nix {
   fi
 }
 
-function install_x {
-  sudo apt install xorg x11-xserver-utils
-}
-
-function install_lightdm {
-  sudo apt install lightdm lightdm-gtk-greeter
+function install_desktop_pkgs {
+  sudo nala install xorg x11-xserver-utils lightdm lightdm-gtk-greeter \
+  awesome luarocks make libgirepository1.0-dev lxappearance materia-gtk-theme \
+  papirus-icon-theme rofi kitty zsh zplug picom thunar neovim ripgrep lxpolkit \
+  yad pulseaudio pavucontrol upower connman ufw neofetch
+  ## maybe pulseaudio-module-bluetooth instead of pulseaudio?
 }
 
 function setup_lightdm_theme {
@@ -85,29 +93,18 @@ function remove_grubtimeout {
   sudo update-grub
 }
 
-function install_desktop_pkgs {
-  sudo apt install awesome lxappearance materia-gtk-theme papirus-icon-theme rofi zsh zplug picom thunar neovim lxpolkit yad pulseaudio pavucontrol upower connman
-  ## maybe pulseaudio-module-bluetooth instead of pulseaudio?
-}
-
 function install_awesome_deps {
-  sudo apt install luarocks make libgirepository1.0-dev
   ## make sure load-module module-dbus-protocol is present in ~/.config/pulse/default.pa
   sudo luarocks install pulseaudio_widget
   sudo luarocks install connman_widget
   sudo luarocks install power_widget
 }
 
-function install_font {
+function install_hack_font {
   sudo rm -f $HOME/temp/Hack.zip
   wget -P $HOME/temp/ https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/Hack.zip
   sudo unzip $HOME/temp/Hack.zip -d /usr/share/fonts/
   sudo fc-cache -fv
-}
-
-function install_alacritty {
-  sudo apt install cargo cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
-  cargo install alacritty
 }
 
 function setup_zsh {
@@ -118,8 +115,7 @@ function setup_zsh {
   cp $HOME/temp/starship-powerline-config/starship.toml $HOME/.config/starship.toml
 }
 
-function install_nvchad_deps {
-  nix-env -iA nixpkgs.ripgrep
+function remove_localnvimshare_nvchad {
   rm -rf $HOME/.local/share/nvim
 }
 
@@ -131,11 +127,10 @@ function install_vscode {
 function install_chrome {
   sudo rm -f $HOME/temp/google-chrome-stable_current_amd64.deb
   wget -P $HOME/temp/ https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-  sudo apt install $HOME/temp/google-chrome-stable_current_amd64.deb
+  sudo nala install $HOME/temp/google-chrome-stable_current_amd64.deb
 }
 
-function install_setup_ufw {
-  sudo apt install ufw
+function setup_ufw {
   sudo ufw default deny incoming
   sudo ufw default allow outgoing
   sudo ufw enable
@@ -144,11 +139,6 @@ function install_setup_ufw {
 function copy_config {
   sudo chmod +x copy-config.sh
   sudo $CUR_DIR/copy-config.sh
-}
-
-function wrapup {
-  sudo apt install neofetch
-  neofetch
 }
 
 main

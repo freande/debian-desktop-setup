@@ -33,7 +33,7 @@ To add current config to repo:
  | Theme | [Materia](https://github.com/nana-4/materia-theme) |
  | Icons | [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme) |
  | Launcher | [Rofi](https://github.com/davatorium/rofi) <br/> [Addons](https://github.com/adi1090x/rofi) |
- | Terminal | [Alacritty](https://alacritty.org/) <br/> [Starship](https://starship.rs/) <br/> [Starship Powerline Config](https://github.com/freande/starship-powerline-config) |
+ | Terminal | [Kitty](https://github.com/kovidgoyal/kitty) <br/> [Starship](https://starship.rs/) <br/> [Starship Powerline Config](https://github.com/freande/starship-powerline-config) |
  | Shell | [Zsh](https://www.zsh.org/) |
  | Font | [Hack NF Complete Mono](https://github.com/ryanoasis/nerd-fonts.git) |
  | Editors | [Neovim](https://neovim.io/) <br/> [NvChad](https://github.com/NvChad/NvChad) <br/> [vscode](https://code.visualstudio.com/) |
@@ -50,17 +50,22 @@ To add current config to repo:
  |  |  |
  
 ## 📝 Todo
-### Rmove unnecessary calls to $home
+### Remove unnecessary calls to $home
+### Fix curdir
+### Remove nix ripgrep
+- nix-env -e nixpkgs.ripgrep
+### Remove alacritty
+- cargo uninstall alacritty
+- sudo apt purge cargo cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
+- sudo rm -rf ~/.config/alacritty
+### Remove Gruvbox
+- sudo apt purge gtk2-engines-murrine
+- sudo rm -rf ~/.themes
 ### To test
 - wifi
 - bt keyboard/mouse
 - bt sound
 - nvim
-### Add skip option
-### Add launch args
-- list steps
-- choose steps to run
-- auto?
 ### Theme?
 - read [this](http://epsi-rns.github.io/desktop/2019/06/15/awesome-overview.html)
 - can I find the GTK theme settings?
@@ -69,15 +74,12 @@ To add current config to repo:
   - (hopefully) backup some file
   - (hopefully) remové lx apearance
 - cleanup after awesome themes? (remove default theme?)
-- remove murraine
-  - sudo apt remove gtk2-engines-murrine
-  - sudo rm -rf ~/.themes
 - remove space between
 - only use a few workspaces, 5? I II III IV V?
 - hide topbar? only show widgets?
 - remove menu button?
 - set hack nf mono as default font everywhere
-- set alacritty as default terminal
+- set kitty as default terminal
 - bluetooth widget?
 ### Configure Rofi
 - [Addons](https://github.com/adi1090x/rofi) only get files needed from git
