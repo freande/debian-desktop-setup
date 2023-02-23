@@ -26,7 +26,7 @@ sudo cp $CUR_DIR/files/sources.list /etc/apt/sources.list
 sudo apt update
 sudo apt upgrade
 
-sudo mkdir -p ~/temp
+sudo mkdir -p $HOME/temp
 
 # Packages for fetching
 sudo apt install wget curl
@@ -52,10 +52,10 @@ echo "[Seat:*]" | sudo tee -a /etc/lightdm/lightdm.conf.d/01_my.conf
 echo "greeter-hide-users=false" | sudo tee -a /etc/lightdm/lightdm.conf.d/01_my.conf
 
 step "Simple LightDM GTK theme"
-sudo rm -rf ~/temp/simple-lightdm-gtk-theme
-git clone https://github.com/freande/simple-lightdm-gtk-theme.git ~/temp/simple-lightdm-gtk-theme
-sudo chmod +x ~/temp/simple-lightdm-gtk-theme/install.sh
-sudo ~/temp/simple-lightdm-gtk-theme/install.sh
+sudo rm -rf $HOME/temp/simple-lightdm-gtk-theme
+git clone https://github.com/freande/simple-lightdm-gtk-theme.git $HOME/temp/simple-lightdm-gtk-theme
+sudo chmod +x $HOME/temp/simple-lightdm-gtk-theme/install.sh
+sudo $HOME/temp/simple-lightdm-gtk-theme/install.sh
 
 step "Remove Grub timeout"
 sudo sed -i 's/^GRUB_TIMEOUT=[[:digit:]]*$/GRUB_TIMEOUT=0/g' /etc/default/grub
@@ -77,9 +77,9 @@ sudo luarocks install connman_widget
 sudo luarocks install power_widget
 
 step "Hack NF font"
-sudo rm -f ~/temp/Hack.zip
-wget -P ~/temp/ https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/Hack.zip
-sudo unzip ~/temp/Hack.zip -d /usr/share/fonts/
+sudo rm -f $HOME/temp/Hack.zip
+wget -P $HOME/temp/ https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/Hack.zip
+sudo unzip $HOME/temp/Hack.zip -d /usr/share/fonts/
 sudo fc-cache -fv
 
 step "Alacritty"
@@ -91,22 +91,22 @@ chsh -s $(which zsh)
 nix-env -iA nixpkgs.starship
 
 step "Starship config"
-sudo rm -rf ~/temp/starship-powerline-config
-git clone https://github.com/freande/starship-powerline-config.git ~/temp/starship-powerline-config
-cp ~/temp/starship-powerline-config/starship.toml ~/.config/starship.toml
+sudo rm -rf $HOME/temp/starship-powerline-config
+git clone https://github.com/freande/starship-powerline-config.git $HOME/temp/starship-powerline-config
+cp $HOME/temp/starship-powerline-config/starship.toml $HOME/.config/starship.toml
 
 step "NvChad requirements"
 nix-env -iA nixpkgs.ripgrep
-rm -rf ~/.local/share/nvim
+rm -rf $HOME/.local/share/nvim
 
 step "vscode"
 export NIXPKGS_ALLOW_UNFREE=1
 nix-env -iA nixpkgs.vscode
 
 step "Chrome (Should really switch to a better browser...)"
-sudo rm -f ~/temp/google-chrome-stable_current_amd64.deb
-wget -P ~/temp/ https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo apt install ~/temp/google-chrome-stable_current_amd64.deb
+sudo rm -f $HOME/temp/google-chrome-stable_current_amd64.deb
+wget -P $HOME/temp/ https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt install $HOME/temp/google-chrome-stable_current_amd64.deb
 
 step "UFW"
 sudo apt install ufw

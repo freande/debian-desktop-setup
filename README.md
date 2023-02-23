@@ -50,6 +50,8 @@ To add current config to repo:
  |  |  |
  
 ## 📝 Todo
+### To test
+- nvim
 ### Theme?
 - read [this](http://epsi-rns.github.io/desktop/2019/06/15/awesome-overview.html)
 - can I find the GTK theme settings?
