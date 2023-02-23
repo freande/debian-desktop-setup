@@ -52,18 +52,16 @@ To add current config to repo:
 ## 📝 Todo
 ### vscode keybinds
 ### To test
-- wifi
 - bt keyboard/mouse
 - bt sound
 - nvim
 - mic
 - cam
 ### Theme
+- https://github.com/betterlockscreen/betterlockscreen
 - read [this](http://epsi-rns.github.io/desktop/2019/06/15/awesome-overview.html)
-- remove space between
 - only use a few workspaces, 5? I II III IV V?
 - hide topbar? only show widgets?
-- remove menu button?
+- menu button -> power
 - bluetooth widget?
-- correct font name in rofi?
 - kitty terminal text colors... (NO BG!)
