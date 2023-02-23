@@ -62,7 +62,7 @@ sudo sed -i 's/^GRUB_TIMEOUT=[[:digit:]]*$/GRUB_TIMEOUT=0/g' /etc/default/grub
 sudo update-grub
 
 step "Desktop packages"
-sudo apt install awesome lxappearance gtk2-engines-murrine rofi zsh zplug picom thunar neovim lxpolkit yad pulseaudio pavucontrol upower connman
+sudo apt install awesome lxappearance materia-gtk-theme papirus-icon-theme rofi zsh zplug picom thunar neovim lxpolkit yad pulseaudio pavucontrol upower connman
 ## maybe pulseaudio-module-bluetooth instead of pulseaudio?
 
 step "Copy config"

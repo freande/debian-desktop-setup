@@ -30,7 +30,8 @@ To add current config to repo:
  | --- | --- |
  | DM | [LightDM](https://github.com/canonical/lightdm) <br/> [LightDM GTK Greeter](https://github.com/Xubuntu/lightdm-gtk-greeter) <br/>[simple-lightdm-gtk-theme](https://github.com/freande/simple-lightdm-gtk-theme) |
  | WM | [Awesome](https://awesomewm.org/) |
- | Theme | [Gruvbox GTK Theme](https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme) |
+ | Theme | [Materia](https://github.com/nana-4/materia-theme) |
+ | Icons | [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme) |
  | Launcher | [Rofi](https://github.com/davatorium/rofi) |
  | Terminal | [Alacritty](https://alacritty.org/) <br/> [Starship](https://starship.rs/) <br/> [Starship Powerline Config](https://github.com/freande/starship-powerline-config) |
  | Shell | [Zsh](https://www.zsh.org/) |
@@ -40,7 +41,7 @@ To add current config to repo:
  | Firewall | [UFW](https://manpages.ubuntu.com/manpages/bionic/en/man8/ufw.8.html) |
  |  |  |
 
-### Awesome Parts
+### Awesome Components
 |  |  |
  |---|---|
  | Battery Widget | [awesome-power_widget](https://github.com/stefano-m/awesome-power_widget) |
@@ -51,6 +52,11 @@ To add current config to repo:
 ## 📝 Todo
 ### Theme?
 - read [this](http://epsi-rns.github.io/desktop/2019/06/15/awesome-overview.html)
+- can I find the GTK theme settings?
+- cleanup after awesome themes?
+- remove murraine
+  - sudo apt remove gtk2-engines-murrine
+  - sudo rm -rf ~/.themes
 - remove space between
 - only use a few workspaces, 5? I II III IV V?
 - hide topbar? only show widgets?
