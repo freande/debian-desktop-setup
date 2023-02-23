@@ -61,7 +61,7 @@ To add current config to repo:
 - only use a few workspaces, 5? I II III IV V?
 - hide topbar? only show widgets?
 - remove menu button?
-- set hack nf mono as default font everywhere
 - set kitty as default terminal
 - bluetooth widget?
-- rofi key bindings
+- rofi keybindings
+- correct font name in rofi?

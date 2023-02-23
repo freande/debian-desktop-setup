@@ -40,6 +40,7 @@ fi
 zplug load
 
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.config/rofi/scripts:$PATH"
 
 if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
