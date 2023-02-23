@@ -54,7 +54,7 @@ function switch_source {
   sudo apt upgrade
 }
 
-function install_install_fetch_pkgs {
+function install_fetch_pkgs {
   sudo apt install nala wget curl
 }
 
