@@ -49,7 +49,8 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/gtk/theme.lua")
+home = os.getenv("HOME")
+beautiful.init(home .. "/.config/awesome/themes/gtk/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "kitty"
@@ -294,11 +295,11 @@ globalkeys = gears.table.join(
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
-    awful.key({       , "Alt"     }, "Space", function () awful.spawn.with_shell(launcher) end,
+    awful.key({         "Mod1"     }, "space", function () awful.spawn.with_shell(home .. "/.config/rofi/scripts/launcher") end,
               {description = "open launcher", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
-    awful.key({ modkey, "Shift"   }, "q", unction () awful.spawn.with_shell(power) end,
+    awful.key({ modkey, "Shift"   }, "q", function () awful.spawn.with_shell(home .. "/.config/rofi/scripts/power") end,
               {description = "quit awesome", group = "awesome"}),
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
