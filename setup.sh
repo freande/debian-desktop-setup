@@ -71,7 +71,7 @@ function install_desktop_pkgs {
   awesome luarocks make libgirepository1.0-dev materia-gtk-theme \
   papirus-icon-theme rofi kitty zsh zplug picom thunar neovim ripgrep \
   lxpolkit yad pulseaudio pavucontrol upower connman ufw neofetch \
-  fonts-noto-color-emoji
+  fonts-noto-color-emoji htop
   ## maybe pulseaudio-module-bluetooth instead of pulseaudio?
 }
 
