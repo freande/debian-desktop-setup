@@ -32,7 +32,7 @@ To add current config to repo:
  | WM | [Awesome](https://awesomewm.org/) |
  | Theme | [Materia](https://github.com/nana-4/materia-theme) |
  | Icons | [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme) |
- | Launcher | [Rofi](https://github.com/davatorium/rofi) |
+ | Launcher | [Rofi](https://github.com/davatorium/rofi) <br/> [Addons](https://github.com/adi1090x/rofi) |
  | Terminal | [Alacritty](https://alacritty.org/) <br/> [Starship](https://starship.rs/) <br/> [Starship Powerline Config](https://github.com/freande/starship-powerline-config) |
  | Shell | [Zsh](https://www.zsh.org/) |
  | Font | [Hack NF Complete Mono](https://github.com/ryanoasis/nerd-fonts.git) |
@@ -50,12 +50,25 @@ To add current config to repo:
  |  |  |
  
 ## 📝 Todo
+### Rmove unnecessary calls to $home
 ### To test
+- wifi
+- bt keyboard/mouse
+- bt sound
 - nvim
+### Add skip option
+### Add launch args
+- list steps
+- choose steps to run
+- auto?
 ### Theme?
 - read [this](http://epsi-rns.github.io/desktop/2019/06/15/awesome-overview.html)
 - can I find the GTK theme settings?
-- cleanup after awesome themes?
+  - set theme and icons with lxapearance
+  - look in some conf files (xresources?)
+  - (hopefully) backup some file
+  - (hopefully) remové lx apearance
+- cleanup after awesome themes? (remove default theme?)
 - remove murraine
   - sudo apt remove gtk2-engines-murrine
   - sudo rm -rf ~/.themes
@@ -66,4 +79,9 @@ To add current config to repo:
 - set hack nf mono as default font everywhere
 - set alacritty as default terminal
 - bluetooth widget?
-- signout/shutdown menu
+### Configure Rofi
+- [Addons](https://github.com/adi1090x/rofi) only get files needed from git
+- configure
+- autorun?
+- backup config
+- keybinings?
