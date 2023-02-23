@@ -33,8 +33,8 @@ To add current config to repo:
  | Theme | [Materia](https://github.com/nana-4/materia-theme) |
  | Icons | [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme) |
  | Launcher | [Rofi](https://github.com/davatorium/rofi) <br/> [Addons](https://github.com/adi1090x/rofi) |
- | Terminal | [Kitty](https://github.com/kovidgoyal/kitty) <br/> [Starship](https://starship.rs/) <br/> [Starship Powerline Config](https://github.com/freande/starship-powerline-config) |
- | Shell | [Zsh](https://www.zsh.org/) |
+ | Terminal | [Kitty](https://github.com/kovidgoyal/kitty) |
+ | Shell | [Zsh](https://www.zsh.org/) <br/> [Starship](https://starship.rs/) <br/> [Starship Powerline Config](https://github.com/freande/starship-powerline-config) |
  | Font | [Hack NF Complete Mono](https://github.com/ryanoasis/nerd-fonts.git) |
  | Editors | [Neovim](https://neovim.io/) <br/> [NvChad](https://github.com/NvChad/NvChad) <br/> [vscode](https://code.visualstudio.com/) |
  | Browser | [Chrome](https://www.google.com/chrome/) |
@@ -52,15 +52,6 @@ To add current config to repo:
 ## 📝 Todo
 ### Remove unnecessary calls to $home
 ### Fix curdir
-### Remove nix ripgrep
-- nix-env -e nixpkgs.ripgrep
-### Remove alacritty
-- cargo uninstall alacritty
-- sudo apt purge cargo cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
-- sudo rm -rf ~/.config/alacritty
-### Remove Gruvbox
-- sudo apt purge gtk2-engines-murrine
-- sudo rm -rf ~/.themes
 ### To test
 - wifi
 - bt keyboard/mouse
@@ -70,10 +61,8 @@ To add current config to repo:
 - read [this](http://epsi-rns.github.io/desktop/2019/06/15/awesome-overview.html)
 - can I find the GTK theme settings?
   - set theme and icons with lxapearance
-  - look in some conf files (xresources?)
-  - (hopefully) backup some file
-  - (hopefully) remové lx apearance
-- cleanup after awesome themes? (remove default theme?)
+  - backup gtk3 file
+  - remove lxapearance
 - remove space between
 - only use a few workspaces, 5? I II III IV V?
 - hide topbar? only show widgets?

@@ -16,11 +16,8 @@ function main {
 
   sudo mkdir -p $HOME/temp
 
-  # Packages for fetching
-  sudo apt install wget curl
-
   step "Switch source to Debian Bookworm" switch_source
-  step "Install Nala" install_nala
+  step "Install Nala, cURL, wget" install_fetch_pkgs
   step "Install NIX package manager" install_nix
   step "Install desktop packages" install_desktop_pkgs
   step "Configure Simple LightDM GTK theme" setup_lightdm_theme
@@ -57,8 +54,8 @@ function switch_source {
   sudo apt upgrade
 }
 
-function install_nala {
-  sudo apt install nala
+function install_install_fetch_pkgs {
+  sudo apt install nala wget curl
 }
 
 function install_nix {
