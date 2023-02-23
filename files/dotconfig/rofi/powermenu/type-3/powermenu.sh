@@ -55,23 +55,23 @@ run_cmd() {
 # Actions
 chosen="$(run_rofi)"
 case ${chosen} in
-$shutdown)
+"$(echo -e $shutdown)")
 	run_cmd --shutdown
 	;;
-$reboot)
+"$(echo -e $reboot)")
 	run_cmd --reboot
 	;;
-$lock)
+"$(echo -e $lock)")
 	if [[ -x '/usr/bin/betterlockscreen' ]]; then
 		betterlockscreen -l
 	elif [[ -x '/usr/bin/i3lock' ]]; then
 		i3lock
 	fi
 	;;
-$suspend)
+"$(echo -e $suspend)")
 	run_cmd --suspend
 	;;
-$logout)
+"$(echo -e $logout)")
 	run_cmd --logout
 	;;
 esac
