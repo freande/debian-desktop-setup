@@ -22,7 +22,7 @@ function main {
   step "Install desktop packages" install_desktop_pkgs
   step "Configure Simple LightDM GTK theme" setup_lightdm_theme
   step "Remove Grub timeout" remove_grubtimeout
-  step "Install AwesomeWM deps" install_awesome_deps
+  step "Configure Connman-GTK" setup_connman_gtk
   step "Install Hack NF font" install_hack_font
   step "Setup Zsh with Starship" setup_zsh
   step "Remove .local/share/nvim for NvChad" remove_localnvimshare_nvchad
@@ -68,10 +68,9 @@ function install_nix {
 
 function install_desktop_pkgs {
   sudo nala install xorg x11-xserver-utils lightdm lightdm-gtk-greeter \
-  awesome luarocks make libgirepository1.0-dev materia-gtk-theme \
-  papirus-icon-theme rofi kitty zsh zplug picom thunar neovim ripgrep \
-  lxpolkit yad pulseaudio pavucontrol upower connman ufw neofetch \
-  fonts-noto-color-emoji htop
+  awesome materia-gtk-theme papirus-icon-theme rofi kitty zsh zplug \
+  picom thunar neovim ripgrep lxpolkit yad pulseaudio pavucontrol connman \
+  connman-gtk libglib2.0-bin ufw neofetch fonts-noto-color-emoji htop
   ## maybe pulseaudio-module-bluetooth instead of pulseaudio?
 }
 
@@ -91,11 +90,10 @@ function remove_grubtimeout {
   sudo update-grub
 }
 
-function install_awesome_deps {
-  ## make sure load-module module-dbus-protocol is present in ~/.config/pulse/default.pa
-  sudo luarocks install pulseaudio_widget
-  sudo luarocks install connman_widget
-  sudo luarocks install power_widget
+function setup_connman_gtk {
+  gsettings set net.connman.gtk launch-to-tray false
+  gsettings set net.connman.gtk openconnect-use-fsid-by-default false
+  gsettings set net.connman.gtk status-icon-enabled false
 }
 
 function install_hack_font {

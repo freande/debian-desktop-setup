@@ -29,7 +29,7 @@ To add current config to repo:
  |  |  |
  | --- | --- |
  | DM | [LightDM](https://github.com/canonical/lightdm) <br/> [LightDM GTK Greeter](https://github.com/Xubuntu/lightdm-gtk-greeter) <br/>[simple-lightdm-gtk-theme](https://github.com/freande/simple-lightdm-gtk-theme) |
- | WM | [Awesome](https://awesomewm.org/) |
+ | WM | [Awesome](https://awesomewm.org/) <br/> [Widgets](https://github.com/streetturtle/awesome-wm-widgets)|
  | Theme | [Materia](https://github.com/nana-4/materia-theme) |
  | Icons | [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme) |
  | Launcher | [Rofi](https://github.com/davatorium/rofi) <br/> [adi1090x Config](https://github.com/adi1090x/rofi) |
@@ -41,13 +41,6 @@ To add current config to repo:
  | Firewall | [UFW](https://manpages.ubuntu.com/manpages/bionic/en/man8/ufw.8.html) |
  |  |  |
 
-### Awesome Components
-|  |  |
- |---|---|
- | Battery Widget | [awesome-power_widget](https://github.com/stefano-m/awesome-power_widget) |
- | Network Widget | [awesome-connman_widget](https://github.com/stefano-m/awesome-connman_widget) |
- | Volume Widget | [awesome-pulseaudio_widget](https://github.com/stefano-m/awesome-pulseaudio_widget) |
- |  |  |
  
 ## 📝 Todo
 ### vscode keybinds
@@ -61,7 +54,10 @@ To add current config to repo:
 - https://github.com/betterlockscreen/betterlockscreen
 - read [this](http://epsi-rns.github.io/desktop/2019/06/15/awesome-overview.html)
 - only use a few workspaces, 5? I II III IV V?
-- hide topbar? only show widgets?
-- menu button -> power
-- bluetooth widget?
+- hide bottombar? only show widgets?
+- menu button (mylauncher) -> power
+- widgets
+  - network
+  - bluetooth?
 - kitty terminal text colors... (NO BG!)
+- keybindings?

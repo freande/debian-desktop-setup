@@ -183,6 +183,34 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
+local calendar_widget = require("awesome-wm-widgets.calendar-widget.calendar")
+local volume_widget = require('awesome-wm-widgets.pactl-widget.volume')
+local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
+
+local cw = calendar_widget {
+    placement = "bottom_right"
+}
+
+local vw = volume_widget{
+    widget_type = "icon",
+    icon_dir = "/usr/share/icons/Papirus-Dark/symbolic/status/"
+}
+
+local bw = battery_widget{
+    font = "Hack NFM 8",
+    path_to_icons = "/usr/share/icons/Papirus-Dark/symbolic/status/",
+    show_current_level = true,
+    display_notification = true,
+    notification_position = "bottom_right",
+    warning_msg_title = "Going dark soon..."
+}
+
+mytextclock:connect_signal("button::press",
+    function(_, _, _, button)
+        if button == 1 then cw.toggle() end
+    end)
+
+
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
@@ -231,6 +259,8 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
             wibox.widget.systray(),
+            vw,
+            bw,
             mytextclock,
             s.mylayoutbox,
         },
@@ -347,7 +377,11 @@ globalkeys = gears.table.join(
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+              {description = "show the menubar", group = "launcher"}),
+    -- Audio
+    awful.key({}, "XF86AudioRaiseVolume", function () volume_widget:inc(5) end),
+    awful.key({}, "XF86AudioLowerVolume", function () volume_widget:dec(5) end),
+    awful.key({}, "XF86AudioMute", function () volume_widget:toggle() end)
 )
 
 clientkeys = gears.table.join(

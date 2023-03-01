@@ -311,7 +311,7 @@ theme = theme_assets.recolor_titlebar(
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
-theme.icon_theme = nil
+theme.icon_theme = "Papirus-Dark"
 
 -- Generate Awesome icon:
 theme.awesome_icon = theme_assets.awesome_icon(
