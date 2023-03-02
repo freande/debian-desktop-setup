@@ -33,7 +33,7 @@ To add current config to repo:
  | Theme | [Materia](https://github.com/nana-4/materia-theme) |
  | Icons | [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme) |
  | Launcher | [Rofi](https://github.com/davatorium/rofi) <br/> [adi1090x Config](https://github.com/adi1090x/rofi) |
- | Terminal | [Kitty](https://github.com/kovidgoyal/kitty) |
+ | Terminal | [Kitty](https://github.com/kovidgoyal/kitty) <br/> [MaterialDark Theme](https://github.com/dexpota/kitty-themes) |
  | Shell | [Zsh](https://www.zsh.org/) <br/> [Starship](https://starship.rs/) <br/> [Starship Powerline Config](https://github.com/freande/starship-powerline-config) |
  | Font | [Hack NF Complete Mono](https://github.com/ryanoasis/nerd-fonts.git) |
  | Editors | [Neovim](https://neovim.io/) <br/> [NvChad](https://github.com/NvChad/NvChad) <br/> [vscode](https://code.visualstudio.com/) |
@@ -55,7 +55,7 @@ To add current config to repo:
 - only use a few workspaces, 5? I II III IV V?
 - menu button (mylauncher) -> power
 - widgets
-  - network
+  - network?
   - bluetooth?
 - kitty terminal text colors... (NO BG!)
 - keybindings?
