@@ -45,5 +45,5 @@ if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
 fi
 
-eval `dircolors $HOME/.dircolors/dircolors.jellybeans`
+eval `dircolors $HOME/.dircolors/dircolors.theme`
 eval "$(starship init zsh)"
