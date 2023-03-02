@@ -51,10 +51,8 @@ To add current config to repo:
 - mic
 - cam
 ### Theme
-- https://github.com/betterlockscreen/betterlockscreen
 - read [this](http://epsi-rns.github.io/desktop/2019/06/15/awesome-overview.html)
 - only use a few workspaces, 5? I II III IV V?
-- hide bottombar? only show widgets?
 - menu button (mylauncher) -> power
 - widgets
   - network
