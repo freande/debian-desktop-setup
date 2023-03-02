@@ -46,6 +46,17 @@ To add current config to repo:
 ## 📝 Todo
 ### break steps into files?
 ### vscode keybinds
+### connman
+- prefer ethernet
+```
+[General]
+PreferredTechnologies=ethernet,wifi
+```
+- bluetooth
+  - enable experimental dbus
+```
+sed -i "s/#Experimental = false/Experimental = true/" /etc/bluetooth/main.conf
+```
 ### To test
 - bt keyboard/mouse
 - bt sound
@@ -60,3 +71,11 @@ To add current config to repo:
   - network?
   - bluetooth?
 - keybindings?
+- picom?
+### Remove nix
+- check for debian starship [release](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=946187)
+  - use nala instead
+- use offical install for vscode
+- remove all nix packages
+- remove nix
+### Update colors in spaceship conf
