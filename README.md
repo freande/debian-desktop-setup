@@ -30,7 +30,7 @@ To add current config to repo:
  | --- | --- |
  | DM | [LightDM](https://github.com/canonical/lightdm) <br/> [LightDM GTK Greeter](https://github.com/Xubuntu/lightdm-gtk-greeter) <br/>[simple-lightdm-gtk-theme](https://github.com/freande/simple-lightdm-gtk-theme) |
  | WM | [Awesome](https://awesomewm.org/) <br/> [Widgets](https://github.com/streetturtle/awesome-wm-widgets)|
- | Theme | [Materia](https://github.com/nana-4/materia-theme) |
+ | Theme | [Yaru](https://github.com/ubuntu/yaru) |
  | Icons | [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme) |
  | Launcher | [Rofi](https://github.com/davatorium/rofi) <br/> [adi1090x Config](https://github.com/adi1090x/rofi) |
  | Terminal | [Kitty](https://github.com/kovidgoyal/kitty) <br/> [MaterialDark Theme](https://github.com/dexpota/kitty-themes) |
@@ -72,6 +72,10 @@ sed -i "s/#Experimental = false/Experimental = true/" /etc/bluetooth/main.conf
   - bluetooth?
 - keybindings?
 - picom?
+- paddings
+- smaller window header (none? and thicker border instead)
+- spaces between!!!
+- apps on taskbar, icons only?
 ### Remove nix
 - check for debian starship [release](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=946187)
   - use nala instead

@@ -68,7 +68,7 @@ function install_nix {
 
 function install_desktop_pkgs {
   sudo nala install xorg x11-xserver-utils lightdm lightdm-gtk-greeter \
-  awesome materia-gtk-theme papirus-icon-theme rofi i3lock kitty zsh zplug \
+  awesome yaru-theme-gtk papirus-icon-theme rofi i3lock kitty zsh zplug \
   thunar neovim ripgrep lxpolkit pulseaudio pavucontrol connman connman-gtk \
   libglib2.0-bin ufw neofetch fonts-noto-color-emoji htop
   ## maybe pulseaudio-module-bluetooth instead of pulseaudio?
