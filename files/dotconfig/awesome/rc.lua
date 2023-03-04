@@ -240,9 +240,10 @@ awful.screen.connect_for_each_screen(function(s)
         screen = s,
         filter = awful.widget.tasklist.filter.currenttags,
         buttons = tasklist_buttons,
-        style    = {
+        style = {
             shape_border_width = dpi(1),
-            shape_border_color = '#777777'
+            shape_border_color = '#777777',
+            shape = gears.shape.rectangle
         },
         layout = {
             spacing = dpi(10),
@@ -258,7 +259,7 @@ awful.screen.connect_for_each_screen(function(s)
                         widget = wibox.widget.imagebox,
                     },
                     margins = dpi(2),
-                    widget  = wibox.container.margin,
+                    widget  = wibox.container.margi
                 },
                 left = dpi(10),
                 right = dpi(10),
