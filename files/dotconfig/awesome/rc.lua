@@ -259,7 +259,7 @@ awful.screen.connect_for_each_screen(function(s)
                         widget = wibox.widget.imagebox,
                     },
                     margins = dpi(2),
-                    widget  = wibox.container.margi
+                    widget  = wibox.container.margin
                 },
                 left = dpi(10),
                 right = dpi(10),
