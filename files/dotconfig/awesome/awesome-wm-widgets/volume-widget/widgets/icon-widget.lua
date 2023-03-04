@@ -2,12 +2,10 @@ local wibox = require("wibox")
 
 local widget = {}
 
-local ICON_DIR = os.getenv("HOME") .. '/.config/awesome/awesome-wm-widgets/volume-widget/icons/'
-
 function widget.get_widget(widgets_args)
     local args = widgets_args or {}
 
-    local icon_dir = args.icon_dir or ICON_DIR
+    local icon_dir = args.icon_dir
 
     return wibox.widget {
         {
@@ -24,11 +22,11 @@ function widget.get_widget(widgets_args)
             else
                 local new_value_num = tonumber(new_value)
                 if (new_value_num >= 0 and new_value_num < 33) then
-                    volume_icon_name="audio-volume-low-symbolic"
+                    volume_icon_name = "audio-volume-low-symbolic"
                 elseif (new_value_num < 66) then
-                    volume_icon_name="audio-volume-medium-symbolic"
+                    volume_icon_name = "audio-volume-medium-symbolic"
                 else
-                    volume_icon_name="audio-volume-high-symbolic"
+                    volume_icon_name = "audio-volume-high-symbolic"
                 end
             end
             self:get_children_by_id('icon')[1]:set_image(icon_dir .. volume_icon_name .. '.svg')

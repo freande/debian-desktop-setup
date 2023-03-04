@@ -17,18 +17,12 @@ local pactl = require("awesome-wm-widgets.pactl-widget.pactl")
 local utils = require("awesome-wm-widgets.pactl-widget.utils")
 
 
-local widget_types = {
-    icon_and_text = require("awesome-wm-widgets.volume-widget.widgets.icon-and-text-widget"),
-    icon = require("awesome-wm-widgets.volume-widget.widgets.icon-widget"),
-    arc = require("awesome-wm-widgets.volume-widget.widgets.arc-widget"),
-    horizontal_bar = require("awesome-wm-widgets.volume-widget.widgets.horizontal-bar-widget"),
-    vertical_bar = require("awesome-wm-widgets.volume-widget.widgets.vertical-bar-widget")
-}
-local volume = {}
+local widget_type = require("awesome-wm-widgets.volume-widget.widgets.icon-widget")
+local volume      = {}
 
-local rows  = { layout = wibox.layout.fixed.vertical }
+local rows        = { layout = wibox.layout.fixed.vertical }
 
-local popup = awful.popup{
+local popup       = awful.popup {
     bg = beautiful.bg_normal,
     ontop = true,
     visible = false,
@@ -49,9 +43,8 @@ local function build_main_line(device)
 end
 
 local function build_rows(devices, on_checkbox_click, device_type)
-    local device_rows  = { layout = wibox.layout.fixed.vertical }
+    local device_rows = { layout = wibox.layout.fixed.vertical }
     for _, device in pairs(devices) do
-
         local checkbox = wibox.widget {
             checked = device.is_default,
             color = beautiful.bg_normal,
@@ -123,7 +116,7 @@ local function build_rows(devices, on_checkbox_click, device_type)
 end
 
 local function build_header_row(text)
-    return wibox.widget{
+    return wibox.widget {
         {
             markup = "<b>" .. text .. "</b>",
             align = 'center',
@@ -136,7 +129,7 @@ end
 
 local function rebuild_popup()
     for i = 0, #rows do
-        rows[i]=nil
+        rows[i] = nil
     end
 
     local sinks, sources = pactl.get_sinks_and_sources()
@@ -149,20 +142,14 @@ local function rebuild_popup()
 end
 
 local function worker(user_args)
-
     local args = user_args or {}
 
     local mixer_cmd = args.mixer_cmd or 'pavucontrol'
-    local widget_type = args.widget_type
     local refresh_rate = args.refresh_rate or 1
     local step = args.step or 5
     local device = args.device or '@DEFAULT_SINK@'
 
-    if widget_types[widget_type] == nil then
-        volume.widget = widget_types['icon_and_text'].get_widget(args.icon_and_text_args)
-    else
-        volume.widget = widget_types[widget_type].get_widget(args)
-    end
+    volume.widget = widget_type.get_widget(args)
 
     local function update_graphic(widget)
         local vol = pactl.get_volume(device)
@@ -208,13 +195,13 @@ local function worker(user_args)
     end
 
     volume.widget:buttons(
-            awful.util.table.join(
-                    awful.button({}, 1, function() volume:toggle() end),
-                    awful.button({}, 2, function() volume:mixer() end),
-                    awful.button({}, 3, function() volume:popup() end),
-                    awful.button({}, 4, function() volume:inc() end),
-                    awful.button({}, 5, function() volume:dec() end)
-            )
+        awful.util.table.join(
+            awful.button({}, 1, function() volume:toggle() end),
+            awful.button({}, 2, function() volume:mixer() end),
+            awful.button({}, 3, function() volume:popup() end),
+            awful.button({}, 4, function() volume:inc() end),
+            awful.button({}, 5, function() volume:dec() end)
+        )
     )
 
     gears.timer {

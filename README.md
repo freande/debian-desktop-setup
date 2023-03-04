@@ -29,7 +29,7 @@ To add current config to repo:
  |  |  |
  | --- | --- |
  | DM | [LightDM](https://github.com/canonical/lightdm) <br/> [LightDM GTK Greeter](https://github.com/Xubuntu/lightdm-gtk-greeter) <br/>[simple-lightdm-gtk-theme](https://github.com/freande/simple-lightdm-gtk-theme) |
- | WM | [Awesome](https://awesomewm.org/) <br/> [Widgets](https://github.com/streetturtle/awesome-wm-widgets)|
+ | WM | [Awesome](https://awesomewm.org/) <br/> [Widgets](https://github.com/streetturtle/awesome-wm-widgets) (modified)|
  | Theme | [Yaru](https://github.com/ubuntu/yaru) |
  | Icons | [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme) |
  | Launcher | [Rofi](https://github.com/davatorium/rofi) <br/> [adi1090x Config](https://github.com/adi1090x/rofi) |

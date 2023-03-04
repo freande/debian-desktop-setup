@@ -17,83 +17,20 @@ local naughty = require("naughty")
 local calendar_widget = {}
 
 local function worker(user_args)
-
-    local calendar_themes = {
-        nord = {
-            bg = '#2E3440',
-            fg = '#D8DEE9',
-            focus_date_bg = '#88C0D0',
-            focus_date_fg = '#000000',
-            weekend_day_bg = '#3B4252',
-            weekday_fg = '#88C0D0',
-            header_fg = '#E5E9F0',
-            border = '#4C566A'
-        },
-        outrun = {
-            bg = '#0d0221',
-            fg = '#D8DEE9',
-            focus_date_bg = '#650d89',
-            focus_date_fg = '#2de6e2',
-            weekend_day_bg = '#261447',
-            weekday_fg = '#2de6e2',
-            header_fg = '#f6019d',
-            border = '#261447'
-        },
-        dark = {
-            bg = '#000000',
-            fg = '#ffffff',
-            focus_date_bg = '#ffffff',
-            focus_date_fg = '#000000',
-            weekend_day_bg = '#444444',
-            weekday_fg = '#ffffff',
-            header_fg = '#ffffff',
-            border = '#333333'
-        },
-        light = {
-            bg = '#ffffff',
-            fg = '#000000',
-            focus_date_bg = '#000000',
-            focus_date_fg = '#ffffff',
-            weekend_day_bg = '#AAAAAA',
-            weekday_fg = '#000000',
-            header_fg = '#000000',
-            border = '#CCCCCC'
-        },
-        monokai = {
-            bg = '#272822',
-            fg = '#F8F8F2',
-            focus_date_bg = '#AE81FF',
-            focus_date_fg = '#ffffff',
-            weekend_day_bg = '#75715E',
-            weekday_fg = '#FD971F',
-            header_fg = '#F92672',
-            border = '#75715E'
-        },
-        naughty = {
-            bg = beautiful.notification_bg or beautiful.bg,
-            fg = beautiful.notification_fg or beautiful.fg,
-            focus_date_bg = beautiful.notification_fg or beautiful.fg,
-            focus_date_fg = beautiful.notification_bg or beautiful.bg,
-            weekend_day_bg = beautiful.bg_focus,
-            weekday_fg = beautiful.fg,
-            header_fg = beautiful.fg,
-            border = beautiful.border_normal
-        }
-
+    local theme = {
+        bg = beautiful.notification_bg or beautiful.bg,
+        fg = beautiful.notification_fg or beautiful.fg,
+        focus_date_bg = beautiful.notification_fg or beautiful.fg,
+        focus_date_fg = beautiful.notification_bg or beautiful.bg,
+        weekend_day_bg = beautiful.bg_focus,
+        weekday_fg = beautiful.fg,
+        header_fg = beautiful.fg,
+        border = beautiful.border_normal
     }
 
     local args = user_args or {}
 
-    if args.theme ~= nil and calendar_themes[args.theme] == nil then
-        naughty.notify({
-            preset = naughty.config.presets.critical,
-            title = 'Calendar Widget',
-            text = 'Theme "' .. args.theme .. '" not found, fallback to default'})
-        args.theme = 'naughty'
-    end
-
-    local theme = args.theme or 'naughty'
-    local placement = args.placement or 'top'
+    local placement = args.placement or 'bottom_right'
     local radius = args.radius or 8
     local next_month_button = args.next_month_button or 4
     local previous_month_button = args.previous_month_button or 5
@@ -108,7 +45,7 @@ local function worker(user_args)
 
     styles.month = {
         padding = 4,
-        bg_color = calendar_themes[theme].bg,
+        bg_color = theme.bg,
         border_width = 0,
     }
 
@@ -118,21 +55,21 @@ local function worker(user_args)
     }
 
     styles.focus = {
-        fg_color = calendar_themes[theme].focus_date_fg,
-        bg_color = calendar_themes[theme].focus_date_bg,
+        fg_color = theme.focus_date_fg,
+        bg_color = theme.focus_date_bg,
         markup = function(t) return '<b>' .. t .. '</b>' end,
         shape = rounded_shape(4)
     }
 
     styles.header = {
-        fg_color = calendar_themes[theme].header_fg,
-        bg_color = calendar_themes[theme].bg,
+        fg_color = theme.header_fg,
+        bg_color = theme.bg,
         markup = function(t) return '<b>' .. t .. '</b>' end
     }
 
     styles.weekday = {
-        fg_color = calendar_themes[theme].weekday_fg,
-        bg_color = calendar_themes[theme].bg,
+        fg_color = theme.weekday_fg,
+        bg_color = theme.bg,
         markup = function(t) return '<b>' .. t .. '</b>' end,
     }
 
@@ -157,8 +94,8 @@ local function worker(user_args)
         local d = { year = date.year, month = (date.month or 1), day = (date.day or 1) }
         local weekday = tonumber(os.date('%w', os.time(d)))
         local default_bg = (weekday == 0 or weekday == 6)
-            and calendar_themes[theme].weekend_day_bg
-            or calendar_themes[theme].bg
+            and theme.weekend_day_bg
+            or theme.bg
         local ret = wibox.widget {
             {
                 {
@@ -172,7 +109,7 @@ local function worker(user_args)
             shape = props.shape,
             shape_border_color = props.border_color or '#000000',
             shape_border_width = props.border_width or 0,
-            fg = props.fg_color or calendar_themes[theme].fg,
+            fg = props.fg_color or theme.fg,
             bg = props.bg_color or default_bg,
             widget = wibox.container.background
         }
@@ -195,34 +132,33 @@ local function worker(user_args)
         shape = rounded_shape(radius),
         offset = { y = 5 },
         border_width = 1,
-        border_color = calendar_themes[theme].border,
+        border_color = theme.border,
         widget = cal
     }
 
     popup:buttons(
-            awful.util.table.join(
-                    awful.button({}, next_month_button, function()
-                        local a = cal:get_date()
-                        a.month = a.month + 1
-                        cal:set_date(nil)
-                        cal:set_date(a)
-                        popup:set_widget(cal)
-                    end),
-                    awful.button({}, previous_month_button, function()
-                        local a = cal:get_date()
-                        a.month = a.month - 1
-                        cal:set_date(nil)
-                        cal:set_date(a)
-                        popup:set_widget(cal)
-                    end)
-            )
+        awful.util.table.join(
+            awful.button({}, next_month_button, function()
+                local a = cal:get_date()
+                a.month = a.month + 1
+                cal:set_date(nil)
+                cal:set_date(a)
+                popup:set_widget(cal)
+            end),
+            awful.button({}, previous_month_button, function()
+                local a = cal:get_date()
+                a.month = a.month - 1
+                cal:set_date(nil)
+                cal:set_date(a)
+                popup:set_widget(cal)
+            end)
+        )
     )
 
     function calendar_widget.toggle()
-
         if popup.visible then
             -- to faster render the calendar refresh it and just hide
-            cal:set_date(nil) -- the new date is not set without removing the old one
+            cal:set_date(nil)     -- the new date is not set without removing the old one
             cal:set_date(os.date('*t'))
             popup:set_widget(nil) -- just in case
             popup:set_widget(cal)
@@ -231,28 +167,32 @@ local function worker(user_args)
             if placement == 'top' then
                 awful.placement.top(popup, { margins = { top = 30 }, parent = awful.screen.focused() })
             elseif placement == 'top_right' then
-                awful.placement.top_right(popup, { margins = { top = 30, right = 10}, parent = awful.screen.focused() })
+                awful.placement.top_right(popup, { margins = { top = 30, right = 10 }, parent = awful.screen.focused() })
             elseif placement == 'top_left' then
-                awful.placement.top_left(popup, { margins = { top = 30, left = 10}, parent = awful.screen.focused() })
+                awful.placement.top_left(popup, { margins = { top = 30, left = 10 }, parent = awful.screen.focused() })
             elseif placement == 'bottom_right' then
-                awful.placement.bottom_right(popup, { margins = { bottom = 30, right = 10},
-                    parent = awful.screen.focused() })
+                awful.placement.bottom_right(popup, {
+                    margins = { bottom = 30, right = 10 },
+                    parent = awful.screen.focused()
+                })
             elseif placement == 'bottom_left' then
-                awful.placement.bottom_left(popup, { margins = { bottom = 30, left = 10},
-                    parent = awful.screen.focused() })
+                awful.placement.bottom_left(popup, {
+                    margins = { bottom = 30, left = 10 },
+                    parent = awful.screen.focused()
+                })
             else
                 awful.placement.top(popup, { margins = { top = 30 }, parent = awful.screen.focused() })
             end
 
             popup.visible = true
-
         end
     end
 
     return calendar_widget
-
 end
 
-return setmetatable(calendar_widget, { __call = function(_, ...)
-    return worker(...)
-end })
+return setmetatable(calendar_widget, {
+    __call = function(_, ...)
+        return worker(...)
+    end
+})
