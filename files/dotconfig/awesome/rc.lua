@@ -365,13 +365,10 @@ local globalkeys = gears.table.join(
         { description = "restore minimized", group = "client" }),
 
     -- Audio
-    awful.key({}, "XF86AudioRaiseVolume", function() volume_widget:inc(5) end,
-    { description = "raise volume", group = "audio" }),
-    awful.key({}, "XF86AudioLowerVolume", function() volume_widget:dec(5) end,
-    { description = "lower volume", group = "audio" }),
-    awful.key({}, "XF86AudioMute", function() volume_widget:toggle() end, { description = "mute", group = "audio" }),
-    awful.key({}, "XF86AudioMicMute", function() volume_widget:toggle_mic() end,
-    { description = "mute mic", group = "audio" })
+    awful.key({}, "XF86AudioRaiseVolume", function() volume_widget:inc(5) end),
+    awful.key({}, "XF86AudioLowerVolume", function() volume_widget:dec(5) end),
+    awful.key({}, "XF86AudioMute", function() volume_widget:toggle() end),
+    awful.key({}, "XF86AudioMicMute", function() volume_widget:toggle_mic() end)
 )
 
 local clientkeys = gears.table.join(
