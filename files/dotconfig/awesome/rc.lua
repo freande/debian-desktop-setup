@@ -241,9 +241,10 @@ awful.screen.connect_for_each_screen(function(s)
         filter = awful.widget.tasklist.filter.currenttags,
         buttons = tasklist_buttons,
         style = {
-            shape_border_width = dpi(1),
-            shape_border_color = '#777777',
-            shape = gears.shape.rectangle
+            shape = gears.shape.rectangle,
+            shape_minimized = gears.shape.rectangle,
+            shape_focus = gears.shape.hexagon,
+            shape_border_width_focus = dpi(1)
         },
         layout = {
             spacing = dpi(10),
