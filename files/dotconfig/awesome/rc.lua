@@ -2,6 +2,7 @@
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
 
+local dpi = require("beautiful.xresources").apply_dpi
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
@@ -16,7 +17,7 @@ local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
-require("awful.hotkeys_popup.keys")
+-- require("awful.hotkeys_popup.keys")
 
 -- Load Debian menu entries
 local debian = require("debian.menu")
@@ -240,7 +241,7 @@ awful.screen.connect_for_each_screen(function(s)
         filter = awful.widget.tasklist.filter.currenttags,
         buttons = tasklist_buttons,
         layout = {
-            spacing = 5,
+            spacing = dpi(10),
             layout = wibox.layout.fixed.horizontal
         },
         -- Notice that there is *NO* wibox.wibox prefix, it is a template,
@@ -248,7 +249,7 @@ awful.screen.connect_for_each_screen(function(s)
         widget_template = {
             {
                 wibox.widget.base.make_widget(),
-                forced_height = 2,
+                forced_height = dpi(2),
                 id = 'background_role',
                 widget = wibox.container.background,
             },
@@ -257,6 +258,9 @@ awful.screen.connect_for_each_screen(function(s)
                     id = 'clienticon',
                     widget = awful.widget.clienticon,
                 },
+                margins = dpi(5),
+                top = dpi(2),
+                left = dpi(2),
                 widget = wibox.container.margin
             },
             nil,
