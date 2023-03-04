@@ -242,9 +242,7 @@ awful.screen.connect_for_each_screen(function(s)
         buttons = tasklist_buttons,
         style = {
             shape = gears.shape.rectangle,
-            shape_minimized = gears.shape.rectangle,
-            shape_focus = gears.shape.hexagon,
-            shape_border_width_focus = dpi(1)
+            shape_minimized = gears.shape.rectangle
         },
         layout = {
             spacing = dpi(10),
