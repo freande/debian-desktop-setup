@@ -20,10 +20,6 @@ To just copy new config:
 ```
 ./copy-config.sh
 ```
-To add current config to repo:
-```
-./backup-config.sh
-```
 
 ## ⚙️ Components
  |  |  |
@@ -61,21 +57,12 @@ sed -i "s/#Experimental = false/Experimental = true/" /etc/bluetooth/main.conf
 - bt keyboard/mouse
 - bt sound
 - nvim
-- mic
-- cam
 ### Theme
-- read [this](http://epsi-rns.github.io/desktop/2019/06/15/awesome-overview.html)
-- only use a few workspaces, 5? I II III IV V?
-- menu button (mylauncher) -> power
 - widgets
   - network?
   - bluetooth?
-- keybindings?
 - picom?
 - paddings
-- smaller window header (none? and thicker border instead)
-- spaces between!!!
-- apps on taskbar, icons only?
 ### Remove nix
 - check for debian starship [release](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=946187)
   - use nala instead
@@ -83,3 +70,4 @@ sed -i "s/#Experimental = false/Experimental = true/" /etc/bluetooth/main.conf
 - remove all nix packages
 - remove nix
 ### Update colors in spaceship conf
+### Add tmux?

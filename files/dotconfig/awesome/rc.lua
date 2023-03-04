@@ -130,14 +130,11 @@ mypowerbutton:buttons(gears.table.join(
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
 
--- Keyboard map indicator and switcher
-local mykeyboardlayout = awful.widget.keyboardlayout()
-
 -- {{{ Wibar
 -- Create a textclock widget
 local mytextclock = wibox.widget.textclock()
 
--- Create a wibox for each screen and add it
+-- Create a wibar for each screen and add it
 local taglist_buttons = gears.table.join(
     awful.button({}, 1, function(t) t:view_only() end),
     awful.button({ modkey }, 1, function(t)
@@ -269,11 +266,11 @@ awful.screen.connect_for_each_screen(function(s)
         }
     }
 
-    -- Create the wibox
-    s.mywibox = awful.wibar({ position = "bottom", screen = s })
+    -- Create the wibar
+    s.mywibar = awful.wibar({ position = "bottom", screen = s })
 
-    -- Add widgets to the wibox
-    s.mywibox:setup {
+    -- Add widgets to the wibar
+    s.mywibar:setup {
         layout = wibox.layout.align.horizontal,
         {
             -- Left widgets
@@ -281,16 +278,21 @@ awful.screen.connect_for_each_screen(function(s)
             mypowerbutton,
             s.mytaglist,
         },
-        s.mytasklist, -- Middle widget
+        {
+            -- Middle widgets
+            layout = wibox.container.margin,
+            left = dpi(10),
+            s.mytasklist,
+        },
         {
             -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
             wibox.widget.systray(),
             myvolumewidget,
             mybatterywidget,
             mytextclock,
             s.mylayoutbox,
+            spacing = 10,
         },
     }
 end)
