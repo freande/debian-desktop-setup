@@ -16,6 +16,10 @@ function pactl.mute_toggle(device)
     spawn('pactl set-sink-mute ' .. device .. ' toggle', false)
 end
 
+function pactl.mute_mic_toggle(device)
+    spawn('pactl set-source-mute ' .. device .. ' toggle', false)
+end
+
 function pactl.get_volume(device)
     local stdout = utils.popen_and_return('pactl get-sink-volume ' .. device)
 

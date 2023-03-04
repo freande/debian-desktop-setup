@@ -147,17 +147,18 @@ local function worker(user_args)
     local mixer_cmd = args.mixer_cmd or 'pavucontrol'
     local refresh_rate = args.refresh_rate or 1
     local step = args.step or 5
-    local device = args.device or '@DEFAULT_SINK@'
+    local device_out = args.device or '@DEFAULT_SINK@'
+    local device_in = '@DEFAULT_SOURCE@'
 
     volume.widget = widget_type.get_widget(args)
 
     local function update_graphic(widget)
-        local vol = pactl.get_volume(device)
+        local vol = pactl.get_volume(device_out)
         if vol ~= nil then
             widget:set_volume_level(vol)
         end
 
-        if pactl.get_mute(device) then
+        if pactl.get_mute(device_out) then
             widget:mute()
         else
             widget:unmute()
@@ -165,18 +166,22 @@ local function worker(user_args)
     end
 
     function volume:inc(s)
-        pactl.volume_increase(device, s or step)
+        pactl.volume_increase(device_out, s or step)
         update_graphic(volume.widget)
     end
 
     function volume:dec(s)
-        pactl.volume_decrease(device, s or step)
+        pactl.volume_decrease(device_out, s or step)
         update_graphic(volume.widget)
     end
 
     function volume:toggle()
-        pactl.mute_toggle(device)
+        pactl.mute_toggle(device_out)
         update_graphic(volume.widget)
+    end
+
+    function volume:toggle_mic()
+        pactl.mute_mic_toggle(device_in)
     end
 
     function volume:popup()
@@ -196,9 +201,9 @@ local function worker(user_args)
 
     volume.widget:buttons(
         awful.util.table.join(
-            awful.button({}, 1, function() volume:toggle() end),
-            awful.button({}, 2, function() volume:mixer() end),
-            awful.button({}, 3, function() volume:popup() end),
+            awful.button({}, 1, function() volume:popup() end),
+            awful.button({}, 2, function() volume:toggle() end),
+            awful.button({}, 3, function() volume:mixer() end),
             awful.button({}, 4, function() volume:inc() end),
             awful.button({}, 5, function() volume:dec() end)
         )

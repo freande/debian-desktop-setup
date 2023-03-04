@@ -121,9 +121,11 @@ end
 local mypowerbutton = awful.widget.button({
     image = beautiful.awesome_icon,
     buttons = {
-        awful.button({}, 1, nil, function()
-            awful.spawn.with_shell(home .. "/.config/rofi/scripts/power")
-        end)
+        gears.table.join(
+            awful.button({}, 1, nil, function()
+                awful.spawn.with_shell(home .. "/.config/rofi/scripts/power")
+            end)
+        )
     }
 })
 
@@ -362,27 +364,14 @@ local globalkeys = gears.table.join(
         end,
         { description = "restore minimized", group = "client" }),
 
-    -- Prompt
-    awful.key({ modkey }, "r", function() awful.screen.focused().mypromptbox:run() end,
-        { description = "run prompt", group = "launcher" }),
-
-    awful.key({ modkey }, "x",
-        function()
-            awful.prompt.run {
-                prompt       = "Run Lua code: ",
-                textbox      = awful.screen.focused().mypromptbox.widget,
-                exe_callback = awful.util.eval,
-                history_path = awful.util.get_cache_dir() .. "/history_eval"
-            }
-        end,
-        { description = "lua execute prompt", group = "awesome" }),
-    -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end,
-        { description = "show the menubar", group = "launcher" }),
     -- Audio
-    awful.key({}, "XF86AudioRaiseVolume", function() volume_widget:inc(5) end),
-    awful.key({}, "XF86AudioLowerVolume", function() volume_widget:dec(5) end),
-    awful.key({}, "XF86AudioMute", function() volume_widget:toggle() end)
+    awful.key({}, "XF86AudioRaiseVolume", function() volume_widget:inc(5) end,
+    { description = "raise volume", group = "audio" }),
+    awful.key({}, "XF86AudioLowerVolume", function() volume_widget:dec(5) end,
+    { description = "lower volume", group = "audio" }),
+    awful.key({}, "XF86AudioMute", function() volume_widget:toggle() end, { description = "mute", group = "audio" }),
+    awful.key({}, "XF86AudioMicMute", function() volume_widget:toggle_mic() end,
+    { description = "mute mic", group = "audio" })
 )
 
 local clientkeys = gears.table.join(
@@ -432,7 +421,7 @@ local clientkeys = gears.table.join(
 -- Bind all key numbers to tags.
 -- Be careful: we use keycodes to make it work on any keyboard layout.
 -- This should map on the top row of your keyboard, usually 1 to 9.
-for i = 1, 9 do
+for i = 1, 5 do
     globalkeys = gears.table.join(globalkeys,
         -- View tag only.
         awful.key({ modkey }, "#" .. i + 9,
