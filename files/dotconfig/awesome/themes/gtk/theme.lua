@@ -8,8 +8,6 @@ local dpi = require("beautiful.xresources").apply_dpi
 local gfs = require("gears.filesystem")
 local themes_path = gfs.get_themes_dir()
 local gears_shape = require("gears.shape")
-local wibox = require("wibox")
-local awful_widget_clienticon = require("awful.widget.clienticon")
 local gtk = require("beautiful.gtk")
 
 
@@ -63,22 +61,6 @@ end
 local function reduce_contrast(color, ratio)
     ratio = ratio or 50
     return darker(color, is_dark(color) and -ratio or ratio)
-end
-
-local function choose_contrast_color(reference, candidate1, candidate2) -- luacheck: no unused
-    if is_dark(reference) then
-        if not is_dark(candidate1) then
-            return candidate1
-        else
-            return candidate2
-        end
-    else
-        if is_dark(candidate1) then
-            return candidate1
-        else
-            return candidate2
-        end
-    end
 end
 
 
@@ -160,69 +142,6 @@ theme.tasklist_shape_border_color_minimized = mix(
 theme.tasklist_shape_border_width_minimized = theme.gtk.button_border_width
 
 theme.tasklist_spacing                      = theme.gtk.button_border_width
-
---[[ Advanced taglist and tasklist styling: {{{
-
---- In order to get taglist and tasklist to follow GTK theme you need to
--- modify your rc.lua in the following way:
-
-diff --git a/rc.lua b/rc.lua
-index 231a2f68c..533a859d2 100644
---- a/rc.lua
-+++ b/rc.lua
-@@ -217,24 +217,12 @@ awful.screen.connect_for_each_screen(function(s)
-         filter  = awful.widget.taglist.filter.all,
-         buttons = taglist_buttons
-     }
-+    -- and apply shape to it
-+    if beautiful.taglist_shape_container then
-+        local background_shape_wrapper = wibox.container.background(s.mytaglist)
-+        background_shape_wrapper._do_taglist_update_now = s.mytaglist._do_taglist_update_now
-+        background_shape_wrapper._do_taglist_update = s.mytaglist._do_taglist_update
-+        background_shape_wrapper.shape = beautiful.taglist_shape_container
-+        background_shape_wrapper.shape_clip = beautiful.taglist_shape_clip_container
-+        background_shape_wrapper.shape_border_width = beautiful.taglist_shape_border_width_container
-+        background_shape_wrapper.shape_border_color = beautiful.taglist_shape_border_color_container
-+        s.mytaglist = background_shape_wrapper
-+    end
-
-     -- Create a tasklist widget
-     s.mytasklist = awful.widget.tasklist {
-         screen  = s,
-         filter  = awful.widget.tasklist.filter.currenttags,
-+        buttons = tasklist_buttons,
-+        widget_template = beautiful.tasklist_widget_template
--        buttons = tasklist_buttons
-     }
-
---]]
-theme.tasklist_widget_template             = {
-    {
-        {
-            {
-                {
-                    id     = 'clienticon',
-                    widget = awful_widget_clienticon,
-                },
-                margins = dpi(4),
-                widget  = wibox.container.margin,
-            },
-            {
-                id     = 'text_role',
-                widget = wibox.widget.textbox,
-            },
-            layout = wibox.layout.fixed.horizontal,
-        },
-        left   = dpi(2),
-        right  = dpi(4),
-        widget = wibox.container.margin
-    },
-    id              = 'background_role',
-    widget          = wibox.container.background,
-    create_callback = function(self, c)
-        self:get_children_by_id('clienticon')[1].client = c
-    end,
-}
 
 theme.taglist_shape_container              = rounded_rect_shape
 theme.taglist_shape_clip_container         = true
@@ -318,15 +237,6 @@ theme.awesome_icon = theme_assets.awesome_icon(
     theme.menu_height, mix(theme.bg_focus, theme.fg_normal), theme.wibar_bg
 )
 
--- Generate taglist squares:
---local taglist_square_size = dpi(4)
---theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
---taglist_square_size, theme.gtk.header_button_border_color
---)
---theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
---taglist_square_size, theme.gtk.header_button_border_color
---)
--- Or disable them:
 theme.taglist_squares_sel = nil
 theme.taglist_squares_unsel = nil
 
@@ -334,10 +244,6 @@ theme.taglist_squares_unsel = nil
 local wallpaper_bg = theme.gtk.base_color
 local wallpaper_fg = theme.gtk.bg_color
 local wallpaper_alt_fg = theme.gtk.selected_bg_color
-if not is_dark(theme.bg_normal) then
-    wallpaper_bg, wallpaper_fg = wallpaper_fg, wallpaper_bg
-end
-wallpaper_bg = reduce_contrast(wallpaper_bg, 50)
 wallpaper_fg = reduce_contrast(wallpaper_fg, 30)
 wallpaper_fg = mix(wallpaper_fg, wallpaper_bg, 0.4)
 wallpaper_alt_fg = mix(wallpaper_alt_fg, wallpaper_fg, 0.4)
@@ -346,5 +252,3 @@ theme.wallpaper = function(s)
 end
 
 return theme
-
--- vim: filetype=lua:expandtab:shiftwidth=4:tabstop=8:softtabstop=4:textwidth=80:foldmethod=marker
