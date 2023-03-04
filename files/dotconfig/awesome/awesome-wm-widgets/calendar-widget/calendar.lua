@@ -12,26 +12,22 @@ local awful = require("awful")
 local beautiful = require("beautiful")
 local wibox = require("wibox")
 local gears = require("gears")
-local naughty = require("naughty")
 
 local calendar_widget = {}
 
 local function worker(user_args)
-    local theme = {
-        bg = beautiful.notification_bg or beautiful.bg,
-        fg = beautiful.notification_fg or beautiful.fg,
-        focus_date_bg = beautiful.notification_fg or beautiful.fg,
-        focus_date_fg = beautiful.notification_bg or beautiful.bg,
-        weekend_day_bg = beautiful.bg_focus,
-        weekday_fg = beautiful.fg,
-        header_fg = beautiful.fg,
+    local calendar_theme = {
+        bg = beautiful.bg,
+        fg = beautiful.fg,
+        focus_date_bg = beautiful.bg_focus,
+        focus_date_fg = beautiful.bg,
         border = beautiful.border_normal
     }
 
     local args = user_args or {}
 
     local placement = args.placement or 'bottom_right'
-    local radius = args.radius or 8
+    local radius = args.radius or 0
     local next_month_button = args.next_month_button or 4
     local previous_month_button = args.previous_month_button or 5
     local start_sunday = args.start_sunday or false
@@ -45,7 +41,7 @@ local function worker(user_args)
 
     styles.month = {
         padding = 4,
-        bg_color = theme.bg,
+        bg_color = calendar_theme.bg,
         border_width = 0,
     }
 
@@ -55,21 +51,21 @@ local function worker(user_args)
     }
 
     styles.focus = {
-        fg_color = theme.focus_date_fg,
-        bg_color = theme.focus_date_bg,
+        fg_color = calendar_theme.focus_date_fg,
+        bg_color = calendar_theme.focus_date_bg,
         markup = function(t) return '<b>' .. t .. '</b>' end,
         shape = rounded_shape(4)
     }
 
     styles.header = {
-        fg_color = theme.header_fg,
-        bg_color = theme.bg,
+        fg_color = calendar_theme.fg,
+        bg_color = calendar_theme.bg,
         markup = function(t) return '<b>' .. t .. '</b>' end
     }
 
     styles.weekday = {
-        fg_color = theme.weekday_fg,
-        bg_color = theme.bg,
+        fg_color = calendar_theme.fg,
+        bg_color = calendar_theme.bg,
         markup = function(t) return '<b>' .. t .. '</b>' end,
     }
 
@@ -90,12 +86,7 @@ local function worker(user_args)
         if props.markup and widget.get_text and widget.set_markup then
             widget:set_markup(props.markup(widget:get_text()))
         end
-        -- Change bg color for weekends
-        local d = { year = date.year, month = (date.month or 1), day = (date.day or 1) }
-        local weekday = tonumber(os.date('%w', os.time(d)))
-        local default_bg = (weekday == 0 or weekday == 6)
-            and theme.weekend_day_bg
-            or theme.bg
+
         local ret = wibox.widget {
             {
                 {
@@ -109,8 +100,8 @@ local function worker(user_args)
             shape = props.shape,
             shape_border_color = props.border_color or '#000000',
             shape_border_width = props.border_width or 0,
-            fg = props.fg_color or theme.fg,
-            bg = props.bg_color or default_bg,
+            fg = props.fg_color or calendar_theme.fg,
+            bg = props.bg_color or calendar_theme.bg,
             widget = wibox.container.background
         }
 
@@ -132,7 +123,7 @@ local function worker(user_args)
         shape = rounded_shape(radius),
         offset = { y = 5 },
         border_width = 1,
-        border_color = theme.border,
+        border_color = calendar_theme.border,
         widget = cal
     }
 
