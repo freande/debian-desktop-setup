@@ -118,16 +118,12 @@ else
     })
 end
 
-local mypowerbutton = awful.widget.button({
-    image = beautiful.awesome_icon,
-    buttons = {
-        gears.table.join(
-            awful.button({}, 1, nil, function()
-                awful.spawn.with_shell(home .. "/.config/rofi/scripts/power")
-            end)
-        )
-    }
-})
+local mypowerbutton = awful.widget.button({ image = beautiful.awesome_icon })
+mypowerbutton:buttons(gears.table.join(
+    awful.button({}, 1, nil, function()
+        awful.spawn.with_shell(home .. "/.config/rofi/scripts/power")
+    end)
+))
 
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
