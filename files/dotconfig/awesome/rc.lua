@@ -200,7 +200,7 @@ local myvolumewidget = volume_widget {
 }
 
 local mybatterywidget = battery_widget {
-    font = "Hack NFM 8",
+    font = "Hack NFM 10",
     path_to_icons = "/usr/share/icons/Papirus-Dark/symbolic/status/"
 }
 
