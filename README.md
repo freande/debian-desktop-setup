@@ -60,7 +60,6 @@ sed -i "s/#Experimental = false/Experimental = true/" /etc/bluetooth/main.conf
 ### Remove nix
 - check for debian starship [release](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=946187)
   - use nala instead
-- use offical install for vscode
 - remove all nix packages
 - remove nix
 ### Update colors in spaceship conf

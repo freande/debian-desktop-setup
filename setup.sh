@@ -116,14 +116,15 @@ function remove_localnvimshare_nvchad {
 }
 
 function install_vscode {
-  export NIXPKGS_ALLOW_UNFREE=1
-  nix-env -iA nixpkgs.vscode
+  sudo rm -f $HOME/temp/vscode.deb
+  curl -o $HOME/temp/vscode.deb -L "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
+  sudo nala install $HOME/temp/vscode.deb
 }
 
 function install_chrome {
-  sudo rm -f $HOME/temp/google-chrome-stable_current_amd64.deb
-  wget -P $HOME/temp/ https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-  sudo nala install $HOME/temp/google-chrome-stable_current_amd64.deb
+  sudo rm -f $HOME/temp/chrome.deb
+  curl -o $HOME/temp/chrome.deb -L "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
+  sudo nala install $HOME/temp/chrome.deb
 }
 
 function setup_ufw {
