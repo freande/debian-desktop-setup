@@ -42,19 +42,8 @@ To just copy new config:
 ## 📝 Todo
 ### break steps into files?
 ### vscode keybinds
-### connman
-- prefer ethernet
-```
-[General]
-PreferredTechnologies=ethernet,wifi
-```
-- bluetooth
-  - enable experimental dbus
-```
-sed -i "s/#Experimental = false/Experimental = true/" /etc/bluetooth/main.conf
-```
 ### To test
-- bt keyboard/mouse
+- bt keyboard
 - bt sound
 - nvim
 ### Remove nix

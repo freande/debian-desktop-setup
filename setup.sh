@@ -22,7 +22,6 @@ function main {
   step "Install desktop packages" install_desktop_pkgs
   step "Configure Simple LightDM GTK theme" setup_lightdm_theme
   step "Remove Grub timeout" remove_grubtimeout
-  step "Configure Connman-GTK" setup_connman_gtk
   step "Install Hack NF font" install_hack_font
   step "Setup Zsh with Starship" setup_zsh
   step "Remove .local/share/nvim for NvChad" remove_localnvimshare_nvchad
@@ -69,9 +68,9 @@ function install_nix {
 function install_desktop_pkgs {
   sudo nala install xorg x11-xserver-utils lightdm lightdm-gtk-greeter \
   awesome yaru-theme-gtk papirus-icon-theme rofi i3lock kitty zsh zplug \
-  thunar neovim ripgrep lxpolkit pulseaudio pavucontrol connman connman-gtk \
-  libglib2.0-bin ufw neofetch fonts-noto-color-emoji htop
-  ## maybe pulseaudio-module-bluetooth instead of pulseaudio?
+  thunar neovim ripgrep lxpolkit network-manager-gnome pulseaudio pavucontrol \
+  blueman pulseaudio-module-bluetooth libglib2.0-bin ufw neofetch htop \
+  fonts-noto-color-emoji
 }
 
 function setup_lightdm_theme {
@@ -88,12 +87,6 @@ function setup_lightdm_theme {
 function remove_grubtimeout {
   sudo sed -i 's/^GRUB_TIMEOUT=[[:digit:]]*$/GRUB_TIMEOUT=0/g' /etc/default/grub
   sudo update-grub
-}
-
-function setup_connman_gtk {
-  gsettings set net.connman.gtk launch-to-tray false
-  gsettings set net.connman.gtk openconnect-use-fsid-by-default false
-  gsettings set net.connman.gtk status-icon-enabled false
 }
 
 function install_hack_font {
